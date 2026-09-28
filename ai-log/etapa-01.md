@@ -1,7 +1,7 @@
 # Etapa 1: Jurnal AI
 
 ## Instrumente utilizate
-- ChatGPT / Gemini
+- Gemini
 
 ## Conversații
 Fără link-uri directe de partajare.

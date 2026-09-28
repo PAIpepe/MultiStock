@@ -38,9 +38,9 @@ Deschideti `index.html` intr-un browser. Nu necesita etapa de build sau server.
 
 | ID | Cerință | Unde (permalink) | Cum se verifică |
 | --- | --- | --- | --- |
-| S1-R1 | README: descriere, campuri, date de test, modul de rulare | README.md | citire |
-| S1-R2 | Secțiunea AI usage | README.md | citire |
-| S1-R3 | Jurnalul AI pentru etapa 1 | ai-log/etapa-01.md | citire |
+| S1-R1 | README: descriere, campuri, date de test, modul de rulare | [README.md](https://github.com/PAIpepe/MultiStock/blob/358bad4bf956691e046ba9c2c849111016258e09/README.md?plain=1#L1-L18)
+| S1-R2 | Secțiunea AI usage | [README.md](https://github.com/PAIpepe/MultiStock/blob/358bad4bf956691e046ba9c2c849111016258e09/README.md?plain=1#L20-L26)
+| S1-R3 | Jurnalul AI pentru etapa 1 | [ai-log/etapa-01.md](https://github.com/PAIpepe/MultiStock/blob/main/ai-log/etapa-01.md)
 | S1-R4 | antet, formular (text + select), 3 carduri cu date proprii | [https://github.com/PAIpepe/MultiStock/blob/259a51d96560d726450dc323ae76b1fdeadbff5a/index.html#L10-L60] | deschide pagina |
 | S1-R5 | cardul finalizat arată diferit | [https://github.com/PAIpepe/MultiStock/blob/259a51d96560d726450dc323ae76b1fdeadbff5a/style.css#L142-L149] | verifică cardul |
 | S1-R6 | 2 coloane pe desktop, 1 sub 700px | [https://github.com/PAIpepe/MultiStock/blob/259a51d96560d726450dc323ae76b1fdeadbff5a/style.css#L157-L162] | redimensionare < 700px |
