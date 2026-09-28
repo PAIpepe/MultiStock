@@ -1,5 +1,5 @@
 # Etapa 1: Jurnal AI
-
+https://share.gemini.google/GXhyKGhU8qsc
 ## Instrumente utilizate
 - Gemini
 
