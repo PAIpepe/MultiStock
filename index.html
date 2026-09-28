@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MultiStock - Mockup</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>MultiStock</h1>
+    <p>Gestionează stocurile și disponibilitatea produselor pe depozite.</p>
+    <p class="app-count">3 produse, dintre care 2 în stoc</p>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>Adaugă produs</h2>
+      <form class="item-form">
+        <label>
+          Nume produs
+          <input type="text" name="titlu" placeholder="Ex: Monitor LG 27 inch" />
+        </label>
+        <label>
+          Locație depozit
+          <select name="eticheta">
+            <option value="bucuresti">București</option>
+            <option value="cluj">Cluj</option>
+            <option value="timisoara">Timișoara</option>
+          </select>
+        </label>
+        <button type="submit">Adaugă în stoc</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Stocuri înregistrate</h2>
+      <!-- Când lista e goală: <p class="empty">Nu există niciun produs în stoc.</p> -->
+      <ul class="item-list">
+        <li class="item-card">
+          <div>
+            <h3>Laptop Dell XPS 15</h3>
+            <span class="badge badge-bucuresti">București</span>
+          </div>
+          <span class="status">În stoc</span>
+        </li>
+        <li class="item-card done">
+          <div>
+            <h3>Scaun Ergonomic Birou</h3>
+            <span class="badge badge-cluj">Cluj</span>
+          </div>
+          <span class="status">Epuizat</span>
+        </li>
+        <li class="item-card">
+          <div>
+            <h3>Cablu HDMI 2m</h3>
+            <span class="badge badge-timisoara">Timișoara</span>
+          </div>
+          <span class="status">În stoc</span>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="app-footer">Proiect Tehnologii Web</footer>
+</body>
+</html>
