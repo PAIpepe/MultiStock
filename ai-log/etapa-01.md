@@ -1,10 +1,9 @@
 # Etapa 1: Jurnal AI
-https://share.gemini.google/GXhyKGhU8qsc
 ## Instrumente utilizate
 - Gemini
 
 ## Conversații
-Fără link-uri directe de partajare.
+https://share.gemini.google/GXhyKGhU8qsc
 
 ## Solicitări principale
 ### 1. Model de date și structură HTML/CSS pentru Etapa 1

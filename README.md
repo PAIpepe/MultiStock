@@ -32,7 +32,7 @@ Deschideti `index.html` intr-un browser. Nu necesita etapa de build sau server.
 ## Stare proiect
 
 - [x] Etapa 1: mockup static
-- [ ] Etapa 2: logica pe date în JavaScript
+- [x] Etapa 2: logica pe date în JavaScript
 
 ## Tabel de verificare
 
