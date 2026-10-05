@@ -51,7 +51,7 @@ Deschideti `index.html` intr-un browser. Nu necesita etapa de build sau server. 
 ### Etapa 2
 | ID | Cerință | Unde (permalink) | Cum se verifică |
 | --- | --- | --- | --- |
-| S2-R1 | Fișier JS legat, afișează în consolă la încărcare | [index.html](https://github.com/PAIpepe/MultiStock/blob/main/index.html) | deschide pagina, F12 |
+| S2-R1 | Fișier JS legat, afișează în consolă la încărcare | [index.html](https://github.com/PAIpepe/MultiStock/blob/ffbf76d6a54dc5c088b4475057d17158622744d0/index.html#L66) | deschide pagina, F12 |
 | S2-R2 | Minim 3 elemente cu id, titlu, in_stoc, locatia | [stocuri.js#L2-L6](https://github.com/PAIpepe/MultiStock/blob/main/stocuri.js#L2-L6) | citește codul |
 | S2-R3 | listare, numărare, căutare, adăugare, comutare, ștergere | [stocuri.js#L12-L56](https://github.com/PAIpepe/MultiStock/blob/main/stocuri.js#L12-L56) | output consolă |
 | S2-R4 | adăugarea respinge nume gol și locație invalidă | [stocuri.js#L77-L78](https://github.com/PAIpepe/MultiStock/blob/main/stocuri.js#L77-L78) | ultimele 2 linii consolă |
