@@ -5,7 +5,7 @@
 
 
 ## Conversații
-https://share.gemini.google/bcQduxCpCdeM
+https://share.gemini.google/ZRAwKMhc7DC5
 
 ## Modul de utilizare
 
