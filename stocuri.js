@@ -1,33 +1,17 @@
-// Datele de test inițiale
-const stocuri = [
-  { id: 1, titlu: "Laptop Dell XPS 15", in_stoc: true, locatia: "Bucuresti" },
-  { id: 2, titlu: "Scaun Ergonomic Birou", in_stoc: false, locatia: "Cluj" },
-  { id: 3, titlu: "Cablu HDMI 2m", in_stoc: true, locatia: "Timisoara" }
-];
+// Definire locații valide (ambele depozite noi incluse)
+const LOCATII = ["bucuresti", "cluj", "timisoara", "pitesti", "iasi"];
 
-// Valorile fixe permise
-const LOCATII = ["Bucuresti", "Cluj", "Timisoara"];
-
-// Funcții de bază (Imutabile)
-function listeazaTitluri(lista) {
-  return lista.map((p) => p.titlu);
-}
-
-function numaraInStoc(lista) {
-  return lista.filter((p) => p.in_stoc).length;
-}
-
-function cautaDupaTitlu(lista, text) {
-  return lista.filter((p) => p.titlu.toLowerCase().includes(text.toLowerCase()));
-}
-
+// Calculează următorul ID
 function nextId(lista) {
-  return lista.reduce((max, p) => Math.max(max, p.id), 0) + 1;
+  if (lista.length === 0) return 1;
+  const ids = lista.map((p) => p.id);
+  return Math.max(...ids) + 1;
 }
 
+// Funcția ta pură de adăugare și validare
 function adaugaProdus(lista, titlu, locatia) {
   const titluCurat = titlu.trim();
-  
+
   // Validare
   if (titluCurat === "") {
     console.log("Eroare validare: Titlul nu poate fi gol.");
@@ -48,31 +32,55 @@ function adaugaProdus(lista, titlu, locatia) {
   return [...lista, produsNou];
 }
 
-function comutaStoc(lista, id) {
-  return lista.map((p) => (p.id === id ? { ...p, in_stoc: !p.in_stoc } : p));
-}
+// Interacțiunea cu interfața (DOM)
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("addForm");
+  const itemList = document.getElementById("itemList");
+  const inputTitlu = document.getElementById("inputTitlu");
+  const selectEticheta = document.getElementById("selectEticheta");
 
-function stergeProdus(lista, id) {
-  return lista.filter((p) => p.id !== id);
-}
+  // Tabloul inițial de stocuri (corespunzător celor 3 elemente din HTML)
+  let stocuriExistente = [
+    { id: 1, titlu: "Laptop Dell XPS 15", in_stoc: true, locatia: "bucuresti" },
+    { id: 2, titlu: "Scaun Ergonomic Birou", in_stoc: false, locatia: "cluj" },
+    { id: 3, titlu: "Cablu HDMI 2m", in_stoc: true, locatia: "timisoara" }
+  ];
 
-// --- Teste în consola browserului ---
-console.log("--- Citire ---");
-console.log("Titluri:", listeazaTitluri(stocuri).join(", "));
-console.log("Produse în stoc:", numaraInStoc(stocuri));
-console.log("Căutare 'laptop':", listeazaTitluri(cautaDupaTitlu(stocuri, "laptop")).join(", "));
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-console.log("--- Adăugare ---");
-let listaNoua = adaugaProdus(stocuri, "Mouse Wireless", "Bucuresti");
-console.log("Lista nouă are:", listaNoua.length, "produse");
-console.log("Originalul a rămas cu:", stocuri.length, "produse");
+      const titlu = inputTitlu.value;
+      const locatia = selectEticheta.value;
+      const locatiaText = selectEticheta.options[selectEticheta.selectedIndex].text;
 
-console.log("--- Modificare și ștergere ---");
-listaNoua = comutaStoc(listaNoua, 1);
-console.log("După epuizarea stocului pt id 1, produse active:", numaraInStoc(listaNoua));
-listaNoua = stergeProdus(listaNoua, 3);
-console.log("După ștergerea id 3 (Cablu HDMI), titluri:", listeazaTitluri(listaNoua).join(", "));
+      // 1. Apelăm funcția ta
+      const listaNoua = adaugaProdus(stocuriExistente, titlu, locatia);
 
-console.log("--- Validare ---");
-adaugaProdus(listaNoua, "   ", "Cluj");
-adaugaProdus(listaNoua, "Monitor 4K", "Iasi");
+      // Dacă produsul a trecut de validare și s-a adăugat
+      if (listaNoua.length > stocuriExistente.length) {
+        stocuriExistente = listaNoua;
+
+        // 2. Creăm elementul vizual în HTML
+        const li = document.createElement("li");
+        li.className = "item-card";
+        li.dataset.depozit = locatia;
+        li.innerHTML = `
+          <div>
+            <h3>${titlu.trim()}</h3>
+            <span class="badge badge-${locatia}">${locatiaText}</span>
+          </div>
+          <span class="status">În stoc</span>
+        `;
+
+        itemList.appendChild(li);
+        inputTitlu.value = "";
+
+        // 3. Notificăm fișierul logica_harta.js să actualizeze numerele de pe pini
+        if (typeof window.updateMapCounters === "function") {
+          window.updateMapCounters();
+        }
+      }
+    });
+  }
+});

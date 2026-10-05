@@ -3,55 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MultiStock - Mockup</title>
+  <title>MultiStock - Gestionează stocurile</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="app-header">
     <h1>MultiStock</h1>
     <p>Gestionează stocurile și disponibilitatea produselor pe depozite.</p>
-    <p class="app-count">3 produse, dintre care 2 în stoc</p>
+    <p class="app-count" id="appCount">3 produse, dintre care 2 în stoc</p>
   </header>
 
   <main class="container">
+    <!-- PANOUL CU HARTA STATICĂ A ROMÂNIEI -->
+    <section class="panel panel-map">
+      <h2>Depozite pe Harta României</h2>
+      <p class="map-subtitle">Apasă pe un depozit pentru a filtra produsele din acel județ/oraș.</p>
+      
+        <div class="map-wrapper">
+        <!-- Imaginea hărții din folderul images -->
+        <img src="images/harta.svg" alt="Harta României" class="romania-svg" />
+
+        <!-- Pinii pentru depozite răman peste imagine -->
+        <button type="button" class="warehouse-pin" data-depozit="bucuresti" style="top: 70%; left: 63%;" title="Depozit București">
+          <span class="pin-icon">🏭</span>
+          <span class="pin-title">București</span>
+          <span class="pin-count">(0)</span>
+        </button>
+
+        <button type="button" class="warehouse-pin" data-depozit="cluj" style="top: 38%; left: 38%;" title="Depozit Cluj">
+          <span class="pin-icon">🏭</span>
+          <span class="pin-title">Cluj</span>
+          <span class="pin-count">(0)</span>
+        </button>
+
+        <button type="button" class="warehouse-pin" data-depozit="timisoara" style="top: 52%; left: 16%;" title="Depozit Timișoara">
+          <span class="pin-icon">🏭</span>
+          <span class="pin-title">Timișoara</span>
+          <span class="pin-count">(0)</span>
+        </button>
+
+        <button type="button" class="warehouse-pin" data-depozit="pitesti" style="top: 65%; left: 51%;" title="Depozit Pitești">
+          <span class="pin-icon">🏭</span>
+          <span class="pin-title">Pitești</span>
+          <span class="pin-count">(0)</span>
+        </button>
+
+        <button type="button" class="warehouse-pin" data-depozit="iasi" style="top: 25%; left: 75%;" title="Depozit Iași">
+          <span class="pin-icon">🏭</span>
+          <span class="pin-title">Iași</span>
+          <span class="pin-count">(0)</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- FORMULAR ADAUGARE PRODUS -->
     <section class="panel">
       <h2>Adaugă produs</h2>
-      <form class="item-form">
+      <form class="item-form" id="addForm">
         <label>
           Nume produs
-          <input type="text" name="titlu" placeholder="Ex: Monitor LG 27 inch" />
+          <input type="text" id="inputTitlu" name="titlu" placeholder="Ex: Monitor LG 27 inch" required />
         </label>
         <label>
           Locație depozit
-          <select name="eticheta">
+          <select id="selectEticheta" name="eticheta">
             <option value="bucuresti">București</option>
             <option value="cluj">Cluj</option>
             <option value="timisoara">Timișoara</option>
+            <option value="pitesti">Pitești</option>
+            <option value="iasi">Iași</option>
           </select>
         </label>
         <button type="submit">Adaugă în stoc</button>
       </form>
     </section>
 
+    <!-- LISTA PRODUSE -->
     <section class="panel">
-      <h2>Stocuri înregistrate</h2>
-      <!-- Când lista e goală: <p class="empty">Nu există niciun produs în stoc.</p> -->
-      <ul class="item-list">
-        <li class="item-card">
+      <div class="panel-header">
+        <h2>Stocuri înregistrate</h2>
+        <button type="button" id="resetFilterBtn" class="btn-reset" style="display: none;">Afișează toate</button>
+      </div>
+
+      <p class="empty-msg" id="emptyMessage" style="display: none;">Nu există niciun produs în stoc pentru locația selectată.</p>
+
+      <ul class="item-list" id="itemList">
+        <li class="item-card" data-depozit="bucuresti">
           <div>
             <h3>Laptop Dell XPS 15</h3>
             <span class="badge badge-bucuresti">București</span>
           </div>
           <span class="status">În stoc</span>
         </li>
-        <li class="item-card done">
+        <li class="item-card done" data-depozit="cluj">
           <div>
             <h3>Scaun Ergonomic Birou</h3>
             <span class="badge badge-cluj">Cluj</span>
           </div>
           <span class="status">Epuizat</span>
         </li>
-        <li class="item-card">
+        <li class="item-card" data-depozit="timisoara">
           <div>
             <h3>Cablu HDMI 2m</h3>
             <span class="badge badge-timisoara">Timișoara</span>
@@ -64,5 +115,6 @@
 
   <footer class="app-footer">Proiect Tehnologii Web</footer>
   <script src="stocuri.js"></script>
+  <script src="logica_harta.js"></script>
 </body>
 </html>
