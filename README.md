@@ -33,6 +33,7 @@ Deschideți `index.html` într-un browser. Nu necesită etapă de build sau serv
 
 - [x] Etapa 1: mockup static
 - [x] Etapa 2: logică pe date în JavaScript și integrare hartă interactivă
+- [x] Etapa 3: Inițializarea proiectului (Vite și React)
 
 ## Tabel de verificare
 
