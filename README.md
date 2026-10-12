@@ -74,5 +74,5 @@ Apoi deschide adresa afișată în terminal (http://localhost:5173).
 | S3-R3 | datele din README, nu din exemplu | [frontend/src/App.jsx#L60-L137](https://github.com/PAIpepe/MultiStock/blob/b3a3c45125bf47925451ea31d8d025dd4718a9ce/frontend/src/App.jsx#L60-L137) | compară cu README |
 | S3-R4 | stilurile din etapa 1 reutilizate | [frontend/src/App.css](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.css) | verifică vizual pagina |
 | S3-R5 | node_modules ignorat, build-ul rulează cu succes | [frontend/.gitignore](https://github.com/PAIpepe/MultiStock/blob/main/frontend/.gitignore) | npm run build |
-| S3-R6 | secțiunea Etapa 3 din README + jurnalul AI | README.md, [ai-log/etapa-03.md](https://github.com/PAIpepe/MultiStock/blob/main/ai-log/etapa-03.md) | citește |
+| S3-R6 | secțiunea Etapa 3 din README + jurnalul AI | [ai-log/etapa-03.md](https://github.com/PAIpepe/MultiStock/blob/main/ai-log/etapa-03.md) | citește |
 | S3-R7 | commit-ul "Stage 3" publicat | [Vezi commit](https://github.com/PAIpepe/MultiStock/commit/b3a3c45125bf47925451ea31d8d025dd4718a9ce) | istoricul commit-urilor |
