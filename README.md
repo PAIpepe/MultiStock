@@ -61,16 +61,12 @@ Deschideți `index.html` într-un browser. Nu necesită etapă de build sau serv
 | S2-R7 | Commit-uri de etapă trimise pe GitHub | [Vezi commit-uri](https://github.com/PAIpepe/MultiStock/commits/main) | istoric commituri |
 
 ## Etapa 3: Proiect Vite și React
-Aplicația se află acum în folderul frontend/, fiind construită cu Vite.[cite: 10] Datele din etapa 2 au fost mutate în componenta principală; lista este afișată împreună cu harta interactivă și formularul de inventar.
-
+Aplicația se află acum în folderul frontend/, fiind construită cu Vite. Datele din etapa 2 au fost mutate în componenta principală; lista este afișată împreună cu harta interactivă și formularul de inventar.
 ## Cum se rulează
 cd frontend
 npm install
 npm run dev
-Apoi deschide adresa afișată în terminal (http://localhost:5173).[cite: 10]
-
-### Etapa 3: Tabel de verificare
-
+Apoi deschide adresa afișată în terminal (http://localhost:5173).
 | ID | Cerință | Unde (permalink) | Cum se verifică |
 | --- | --- | --- | --- |
 | S3-R1 | npm run dev pornește fără erori | [frontend/package.json](https://github.com/PAIpepe/MultiStock/blob/main/frontend/package.json) | npm install, npm run dev |
