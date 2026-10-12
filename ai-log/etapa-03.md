@@ -5,8 +5,8 @@
 
 
 ## Conversații
-https://share.gemini.google/B7agUoSaVNAf
-https://share.gemini.google/wNQJ4SQZ3wJw
+- https://share.gemini.google/B7agUoSaVNAf
+- https://share.gemini.google/wNQJ4SQZ3wJw
 
 
 ## Modul de utilizare
