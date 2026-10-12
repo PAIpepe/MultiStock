@@ -60,9 +60,9 @@ Deschideți `index.html` într-un browser. Nu necesită etapă de build sau serv
 | S2-R6 | Secțiunea Etapa 2 în README + jurnal AI actualizat | [ai-log/etapa-02.md](https://github.com/PAIpepe/MultiStock/blob/main/ai-log/etapa-02.md) | citește |
 | S2-R7 | Commit-uri de etapă trimise pe GitHub | [Vezi commit-uri](https://github.com/PAIpepe/MultiStock/commits/main) | istoric commituri |
 
-## Etapa 3: Proiect Vite și React
+### Etapa 3: Proiect Vite și React
 Aplicația se află acum în folderul frontend/, fiind construită cu Vite. Datele din etapa 2 au fost mutate în componenta principală; lista este afișată împreună cu harta interactivă și formularul de inventar.
-## Cum se rulează
+### Cum se rulează
 cd frontend
 npm install
 npm run dev
