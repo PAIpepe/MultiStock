@@ -58,3 +58,24 @@ Deschideți `index.html` într-un browser. Nu necesită etapă de build sau serv
 | S2-R5 | Păstrarea imutabilității (spread operator `...`) | [stocuri.js#L33](https://github.com/PAIpepe/MultiStock/blob/main/stocuri.js#L33) | citește funcția `adaugaProdus` |
 | S2-R6 | Secțiunea Etapa 2 în README + jurnal AI actualizat | [ai-log/etapa-02.md](https://github.com/PAIpepe/MultiStock/blob/main/ai-log/etapa-02.md) | citește |
 | S2-R7 | Commit-uri de etapă trimise pe GitHub | [Vezi commit-uri](https://github.com/PAIpepe/MultiStock/commits/main) | istoric commituri |
+
+## Etapa 3: Proiect Vite și React
+Aplicația se află acum în folderul frontend/, fiind construită cu Vite.[cite: 10] Datele din etapa 2 au fost mutate în componenta principală; lista este afișată împreună cu harta interactivă și formularul de inventar.
+
+## Cum se rulează
+cd frontend
+npm install
+npm run dev
+Apoi deschide adresa afișată în terminal (http://localhost:5173).[cite: 10]
+
+### Etapa 3: Tabel de verificare
+
+| ID | Cerință | Unde (permalink) | Cum se verifică |
+|---|---|---|---|
+| S3-R1 | npm run dev pornește fără erori | [frontend/package.json](https://github.com/PAIpepe/MultiStock/blob/main/frontend/package.json) | npm install, npm run dev |[cite: 10]
+| S3-R2 | numele aplicației și contorul calculate din date | [frontend/src/App.jsx#L152-L220](https://github.com/PAIpepe/MultiStock/blob/b3a3c45125bf47925451ea31d8d025dd4718a9ce/frontend/src/App.jsx#L152-L220) | editează datele, salvează |[cite: 10, 11]
+| S3-R3 | datele din README, nu din exemplu | [frontend/src/App.jsx#L60-L137](https://github.com/PAIpepe/MultiStock/blob/b3a3c45125bf47925451ea31d8d025dd4718a9ce/frontend/src/App.jsx#L60-L137) | compară cu README |[cite: 10, 11]
+| S3-R4 | stilurile din etapa 1 reutilizate | [frontend/src/App.css](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.css) | verifică vizual pagina |[cite: 10, 11]
+| S3-R5 | node_modules ignorat, build-ul rulează cu succes | [frontend/.gitignore](https://github.com/PAIpepe/MultiStock/blob/main/frontend/.gitignore) | npm run build |[cite: 10, 11]
+| S3-R6 | secțiunea Etapa 3 din README + jurnalul AI | README.md, [ai-log/etapa-03.md]() | citește |[cite: 10, 11]
+| S3-R7 | commit-ul "Stage 3" publicat | [https://github.com/PAIpepe/MultiStock/commit/b3a3c45125bf47925451ea31d8d025dd4718a9ce] | istoricul commit-urilor |[cite: 10, 11]
