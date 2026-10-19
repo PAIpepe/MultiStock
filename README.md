@@ -33,6 +33,8 @@ Deschideți `index.html` într-un browser. Nu necesită etapă de build sau serv
 
 - [x] Etapa 1: mockup static
 - [x] Etapa 2: logică pe date în JavaScript și integrare hartă interactivă
+- [x] Etapa 3: Proiect Vite și React
+- [x] Etapa 4: Componente construite din date
 
 ## Tabel de verificare
 
@@ -79,3 +81,20 @@ Apoi deschide adresa afișată în terminal (http://localhost:5173).[cite: 10]
 | S3-R5 | node_modules ignorat, build-ul rulează cu succes | [frontend/.gitignore](https://github.com/PAIpepe/MultiStock/blob/main/frontend/.gitignore) | npm run build |[cite: 10, 11]
 | S3-R6 | secțiunea Etapa 3 din README + jurnalul AI | README.md, [ai-log/etapa-03.md]() | citește |[cite: 10, 11]
 | S3-R7 | commit-ul "Stage 3" publicat | [https://github.com/PAIpepe/MultiStock/commit/b3a3c45125bf47925451ea31d8d025dd4718a9ce] | istoricul commit-urilor |[cite: 10, 11]
+
+## Etapa 4: 
+Lista este randată din date, prin intermediul a două componente:
+- `ProdusList` primește întregul array și randează câte un card pentru fiecare element.
+- `ProdusCard` primește un single element prin props și îl afișează.
+
+### Etapa 4: Tabel de verificare
+
+| ID | Cerință | Unde (permalink) | Cum se verifică |
+|---|---|---|---|
+| S4-R1 | Există cel puțin 2 componente în src/components/ | [frontend/src/components/](https://github.com/PAIpepe/MultiStock/tree/main/frontend/src/components) | deschide folderul |
+| S4-R2 | cardul primește datele prin props | [frontend/src/components/ProdusCard.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/components/ProdusCard.jsx) | citește codul |
+| S4-R3 | listă randată cu map + key={id}, fără avertismente | [frontend/src/components/ProdusList.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/components/ProdusList.jsx) | F12, Console |
+| S4-R4 | mesaj afișat pentru lista goală | [frontend/src/components/ProdusList.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/components/ProdusList.jsx) | golește lista / filtrează gol |
+| S4-R5 | starea elementului modifică aspectul cardului | [frontend/src/components/ProdusCard.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/components/ProdusCard.jsx) | comută stocul unui produs |
+| S4-R6 | secțiunea Etapa 4 din README + jurnalul AI | README.md, [ai-log/etapa-04.md](https://github.com/PAIpepe/MultiStock/blob/main/ai-log/etapa-04.md) | citește |
+| S4-R7 | commit-ul "Stage 4" publicat pe GitHub | [înlocuiește-aici-cu-linkul-commitului-tău] | istoricul commit-urilor |
