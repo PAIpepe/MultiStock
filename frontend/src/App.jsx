@@ -1,7 +1,7 @@
 import { useState, useId } from "react";
 import hartaSvg from "./assets/harta.svg";
+import ProdusList from "./components/ProdusList.jsx";
 
-// Definiția depozitelor cu coordonate pe SVG-ul României și informații despre județe
 export const DEPOZITE = [
   {
     id: "bucuresti",
@@ -143,9 +143,7 @@ const DATE_INITIALE = [
 
 export default function App() {
   const [stocuri, setStocuri] = useState(DATE_INITIALE);
-  // Depozitul deschis curent în meniul pop-up
   const [depozitMeniu, setDepozitMeniu] = useState(null);
-  // Filtru activ pe lista completă (poate fi id-ul unui depozit sau null pentru toate)
   const [filtruLocatie, setFiltruLocatie] = useState(null);
 
   // Câmpuri formular adăugare produs nou
@@ -160,12 +158,10 @@ export default function App() {
   const selectCategorieId = useId();
   const inputCantitateId = useId();
 
-  // Statistici globale
   const totalProduse = stocuri.length;
   const inStocProduse = stocuri.filter((p) => p.in_stoc).length;
   const epuizateProduse = totalProduse - inStocProduse;
 
-  // Calcul stocuri pe depozit
   const getStatisticiDepozit = (depId) => {
     const items = stocuri.filter((p) => p.locatia === depId);
     const disponibile = items.filter((p) => p.in_stoc).length;
@@ -177,7 +173,6 @@ export default function App() {
     };
   };
 
-  // Comută disponibilitatea produsului (În stoc / Epuizat)
   const handleToggleStoc = (id) => {
     setStocuri((prev) =>
       prev.map((item) =>
@@ -186,12 +181,10 @@ export default function App() {
     );
   };
 
-  // Ștergere produs
   const handleStergeProdus = (id) => {
     setStocuri((prev) => prev.filter((item) => item.id !== id));
   };
 
-  // Adăugare produs nou conform modelului de date imutabil
   const handleAdaugaProdus = (e) => {
     e.preventDefault();
     const titluCurat = nouTitlu.trim();
@@ -217,13 +210,11 @@ export default function App() {
     setTimeout(() => setMesajSucces(""), 3500);
   };
 
-  // Depozitul selectat pentru meniu
   const depozitActiv = DEPOZITE.find((d) => d.id === depozitMeniu);
   const infoDepozitActiv = depozitActiv
     ? getStatisticiDepozit(depozitActiv.id)
     : null;
 
-  // Filtrare produse afișate în secțiunea inferioară
   const produseFiltrate = filtruLocatie
     ? stocuri.filter((p) => p.locatia === filtruLocatie)
     : stocuri;
@@ -428,15 +419,13 @@ export default function App() {
               </div>
             );
           })}
+        </div>
+      </section>
 
-          
-          </div>
-        </section>
-
-        {/* CONTAINER PENTRU RESTUL CONȚINUTULUI */}
-        <main className="container">
-          {/* SECȚIUNE CU 2 COLOANE: FORMULAR ADAUGARE + LISTĂ PRODUSE */}
-          <div className="content-grid">
+      {/* CONTAINER PENTRU RESTUL CONȚINUTULUI */}
+      <main className="container">
+        {/* SECȚIUNE CU 2 COLOANE: FORMULAR ADAUGARE + LISTĂ PRODUSE */}
+        <div className="content-grid">
           {/* FORMULAR DE ADAUGARE */}
           <section className="panel">
             <h2>➕ Adaugă produs nou</h2>
@@ -510,7 +499,7 @@ export default function App() {
             </form>
           </section>
 
-          {/* LISTA DE PRODUSE ÎNREGISTRATE */}
+          {/* LISTA DE PRODUSE ÎNREGISTRATE (Randată din componenta copil) */}
           <section className="panel">
             <div className="panel-header">
               <div>
@@ -532,58 +521,11 @@ export default function App() {
               )}
             </div>
 
-            {produseFiltrate.length === 0 ? (
-              <p className="empty-msg">
-                Nu există produse înregistrate pentru filtrul selectat.
-              </p>
-            ) : (
-              <ul className="item-list">
-                {produseFiltrate.map((item) => {
-                  const depozitItem = DEPOZITE.find((d) => d.id === item.locatia);
-                  return (
-                    <li
-                      key={item.id}
-                      className={`item-card ${!item.in_stoc ? "done" : ""}`}
-                    >
-                      <div className="item-card-content">
-                        <h3>{item.titlu}</h3>
-                        <div className="item-tags">
-                          <span className={`badge ${depozitItem?.badgeClass || ""}`}>
-                            📍 {depozitItem?.oras || item.locatia}
-                          </span>
-                          <span className="badge badge-category">
-                            {item.categorie}
-                          </span>
-                          <span className="badge-qty">{item.cantitate} buc.</span>
-                        </div>
-                      </div>
-
-                      <div className="item-card-actions">
-                        <button
-                          type="button"
-                          className={`status-btn ${
-                            item.in_stoc ? "status-ok" : "status-out"
-                          }`}
-                          onClick={() => handleToggleStoc(item.id)}
-                          title="Comută stocul (În stoc / Epuizat)"
-                        >
-                          {item.in_stoc ? "În stoc" : "Epuizat"}
-                        </button>
-                        <button
-                          type="button"
-                          className="btn-delete"
-                          onClick={() => handleStergeProdus(item.id)}
-                          title="Șterge produs"
-                          aria-label="Șterge"
-                        >
-                          ✕
-                        </button>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
+            <ProdusList
+              produse={produseFiltrate}
+              onToggle={handleToggleStoc}
+              onDelete={handleStergeProdus}
+            />
           </section>
         </div>
       </main>
