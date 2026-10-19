@@ -91,4 +91,4 @@ Lista este randată din date, prin intermediul a două componente:
 | S4-R4 | mesaj afișat pentru lista goală | [frontend/src/components/ProdusList.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/components/ProdusList.jsx) | golește lista / filtrează gol |
 | S4-R5 | starea elementului modifică aspectul cardului | [frontend/src/components/ProdusCard.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/components/ProdusCard.jsx) | comută stocul unui produs |
 | S4-R6 | secțiunea Etapa 4 din README + jurnalul AI | README.md, [ai-log/etapa-04.md](https://github.com/PAIpepe/MultiStock/blob/main/ai-log/etapa-04.md) | citește |
-| S4-R7 | commit-ul "Stage 4" publicat pe GitHub | [înlocuiește-aici-cu-linkul-commitului-tău] | istoricul commit-urilor |
+| S4-R7 | commit-ul "Stage 4" publicat pe GitHub | [https://github.com/PAIpepe/MultiStock/commit/a1f9a56c12a5cb3299211a64d5f347ae179b3c23] | istoricul commit-urilor |
