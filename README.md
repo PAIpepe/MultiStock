@@ -33,8 +33,6 @@ Deschideți `index.html` într-un browser. Nu necesită etapă de build sau serv
 
 - [x] Etapa 1: mockup static
 - [x] Etapa 2: logică pe date în JavaScript și integrare hartă interactivă
-- [x] Etapa 3: Proiect Vite și React
-- [x] Etapa 4: Componente construite din date
 
 ## Tabel de verificare
 
@@ -61,17 +59,13 @@ Deschideți `index.html` într-un browser. Nu necesită etapă de build sau serv
 | S2-R6 | Secțiunea Etapa 2 în README + jurnal AI actualizat | [ai-log/etapa-02.md](https://github.com/PAIpepe/MultiStock/blob/main/ai-log/etapa-02.md) | citește |
 | S2-R7 | Commit-uri de etapă trimise pe GitHub | [Vezi commit-uri](https://github.com/PAIpepe/MultiStock/commits/main) | istoric commituri |
 
-## Etapa 3: Proiect Vite și React
-Aplicația se află acum în folderul frontend/, fiind construită cu Vite.[cite: 10] Datele din etapa 2 au fost mutate în componenta principală; lista este afișată împreună cu harta interactivă și formularul de inventar.
-
-## Cum se rulează
+### Etapa 3: Proiect Vite și React
+Aplicația se află acum în folderul frontend/, fiind construită cu Vite. Datele din etapa 2 au fost mutate în componenta principală; lista este afișată împreună cu harta interactivă și formularul de inventar.
+### Cum se rulează
 cd frontend
 npm install
 npm run dev
-Apoi deschide adresa afișată în terminal (http://localhost:5173).[cite: 10]
-
-### Etapa 3: Tabel de verificare
-
+Apoi deschide adresa afișată în terminal (http://localhost:5173).
 | ID | Cerință | Unde (permalink) | Cum se verifică |
 |---|---|---|---|
 | S3-R1 | npm run dev pornește fără erori | [frontend/package.json](https://github.com/PAIpepe/MultiStock/blob/main/frontend/package.json) | npm install, npm run dev |[cite: 10]
@@ -82,7 +76,7 @@ Apoi deschide adresa afișată în terminal (http://localhost:5173).[cite: 10]
 | S3-R6 | secțiunea Etapa 3 din README + jurnalul AI | README.md, [ai-log/etapa-03.md]() | citește |[cite: 10, 11]
 | S3-R7 | commit-ul "Stage 3" publicat | [https://github.com/PAIpepe/MultiStock/commit/b3a3c45125bf47925451ea31d8d025dd4718a9ce] | istoricul commit-urilor |[cite: 10, 11]
 
-## Etapa 4: 
+## Etapa 4: Componente construite din date
 Lista este randată din date, prin intermediul a două componente:
 - `ProdusList` primește întregul array și randează câte un card pentru fiecare element.
 - `ProdusCard` primește un single element prin props și îl afișează.
