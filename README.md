@@ -103,11 +103,11 @@ Lista este păstrată în state-ul React. Bifarea și ștergerea funcționează 
 
 | ID | Cerință | Unde (permalink) | Cum se verifică |
 |---|---|---|---|
-| S5-R1 | Lista păstrată în useState, în App | [frontend/src/App.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx) | citește |
-| S5-R2 | Bifarea schimbă state-ul și aspectul cardului | [frontend/src/App.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx)<br>[frontend/src/components/ProdusCard.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/components/ProdusCard.jsx) | click pe checkbox |
-| S5-R3 | Ștergerea elimină elementul din listă | [frontend/src/App.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx)<br>[frontend/src/components/ProdusCard.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/components/ProdusCard.jsx) | click pe butonul Șterge |
-| S5-R4 | Contorul din antet e derivat, nu în state | [frontend/src/App.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx) | bifează checkbox, urmărește antetul |
-| S5-R5 | Actualizări imutabile (fără push, splice, atribuiri) | [frontend/src/App.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx) | citește codul |
-| S5-R6 | Comutare temă: state + data-theme pe html | [frontend/src/App.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx)<br>[frontend/src/App.css](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.css) | click pe buton, testează ambele teme OS |
+| S5-R1 | Lista păstrată în useState, în App | [frontend/src/App.jsx#L65](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx#L65) | citește |
+| S5-R2 | Bifarea schimbă state-ul și aspectul cardului | [frontend/src/App.jsx#L95-L101](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx#L95-L101)<br>[frontend/src/components/ProdusCard.jsx#L10-L15](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/components/ProdusCard.jsx#L10-L15) | click pe checkbox |
+| S5-R3 | Ștergerea elimină elementul din listă | [frontend/src/App.jsx#L103-L105](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx#L103-L105)<br>[frontend/src/components/ProdusCard.jsx#L31-L38](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/components/ProdusCard.jsx#L31-L38) | click pe butonul Șterge |
+| S5-R4 | Contorul din antet e derivat, nu în state | [frontend/src/App.jsx#L79-L81](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx#L79-L81) | bifează checkbox, urmărește antetul |
+| S5-R5 | Actualizări imutabile (fără push, splice, atribuiri) | [frontend/src/App.jsx#L95-L105](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx#L95-L105) | citește codul |
+| S5-R6 | Comutare temă: state + data-theme pe html | [frontend/src/App.jsx#L108-L112](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx#L108-L112)<br>[frontend/src/App.css#L1-L20](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.css#L1-L20) | click pe buton, testează ambele teme OS |
 | S5-R7 | Fără avertismente în consolă; README + jurnal AI | [README.md](https://github.com/PAIpepe/MultiStock/blob/main/README.md)<br>[ai-log/etapa-05.md](https://github.com/PAIpepe/MultiStock/blob/main/ai-log/etapa-05.md) | F12, tab-ul Console |
-| S5-R8 | Commit-ul "Stage 5" publicat | [Vezi commit](https://github.com/PAIpepe/MultiStock/commits/main) | istoricul commit-urilor GitHub |
+| S5-R8 | Commit-ul "Stage 5" publicat | [Vezi commit](https://github.com/PAIpepe/MultiStock/commit/93bac473a1d4dac05923ac85a32eb1fc03fa44b2) | istoricul commit-urilor GitHub |
