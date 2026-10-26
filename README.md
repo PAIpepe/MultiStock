@@ -14,7 +14,7 @@ MultiStock este o aplicație web concepută pentru gestionarea stocurilor și ur
 
 Date de test utilizate în toate etapele:
 1. Laptop Dell XPS 15, activ, București
-2. Scaun Ergonomic Birou, epuizat, Cluj
+​2. Scaun Ergonomic Birou, epuizat, Cluj
 3. Cablu HDMI 2m, activ, Timișoara
 
 ## Utilizarea AI
@@ -33,6 +33,9 @@ Deschideți `index.html` într-un browser. Nu necesită etapă de build sau serv
 
 - [x] Etapa 1: mockup static
 - [x] Etapa 2: logică pe date în JavaScript și integrare hartă interactivă
+- [x] Etapa 3: componente React de bază
+- [x] Etapa 4: componente construite din date
+- [x] Etapa 5: state local și evenimente
 
 ## Tabel de verificare
 
@@ -68,13 +71,13 @@ npm run dev
 Apoi deschide adresa afișată în terminal (http://localhost:5173).
 | ID | Cerință | Unde (permalink) | Cum se verifică |
 |---|---|---|---|
-| S3-R1 | npm run dev pornește fără erori | [frontend/package.json](https://github.com/PAIpepe/MultiStock/blob/main/frontend/package.json) | npm install, npm run dev |[cite: 10]
-| S3-R2 | numele aplicației și contorul calculate din date | [frontend/src/App.jsx#L152-L220](https://github.com/PAIpepe/MultiStock/blob/b3a3c45125bf47925451ea31d8d025dd4718a9ce/frontend/src/App.jsx#L152-L220) | editează datele, salvează |[cite: 10, 11]
-| S3-R3 | datele din README, nu din exemplu | [frontend/src/App.jsx#L60-L137](https://github.com/PAIpepe/MultiStock/blob/b3a3c45125bf47925451ea31d8d025dd4718a9ce/frontend/src/App.jsx#L60-L137) | compară cu README |[cite: 10, 11]
-| S3-R4 | stilurile din etapa 1 reutilizate | [frontend/src/App.css](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.css) | verifică vizual pagina |[cite: 10, 11]
-| S3-R5 | node_modules ignorat, build-ul rulează cu succes | [frontend/.gitignore](https://github.com/PAIpepe/MultiStock/blob/main/frontend/.gitignore) | npm run build |[cite: 10, 11]
-| S3-R6 | secțiunea Etapa 3 din README + jurnalul AI | README.md, [ai-log/etapa-03.md]() | citește |[cite: 10, 11]
-| S3-R7 | commit-ul "Stage 3" publicat | [https://github.com/PAIpepe/MultiStock/commit/b3a3c45125bf47925451ea31d8d025dd4718a9ce] | istoricul commit-urilor |[cite: 10, 11]
+| S3-R1 | npm run dev pornește fără erori | [frontend/package.json](https://github.com/PAIpepe/MultiStock/blob/main/frontend/package.json) | npm install, npm run dev |
+| S3-R2 | numele aplicației și contorul calculate din date | [frontend/src/App.jsx](https://github.com/PAIpepe/MultiStock/blob/b3a3c45125bf47925451ea31d8d025dd4718a9ce/frontend/src/App.jsx) | editează datele, salvează |
+| S3-R3 | datele din README, nu din exemplu | [frontend/src/App.jsx](https://github.com/PAIpepe/MultiStock/blob/b3a3c45125bf47925451ea31d8d025dd4718a9ce/frontend/src/App.jsx) | compară cu README |
+| S3-R4 | stilurile din etapa 1 reutilizate | [frontend/src/App.css](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.css) | verifică vizual pagina |
+| S3-R5 | node_modules ignorat, build-ul rulează cu succes | [frontend/.gitignore](https://github.com/PAIpepe/MultiStock/blob/main/frontend/.gitignore) | npm run build |
+| S3-R6 | secțiunea Etapa 3 din README + jurnalul AI | [ai-log/etapa-03.md](https://github.com/PAIpepe/MultiStock/blob/main/ai-log/etapa-03.md) | citește |
+| S3-R7 | commit-ul "Stage 3" publicat | [Vezi commit](https://github.com/PAIpepe/MultiStock/commit/b3a3c45125bf47925451ea31d8d025dd4718a9ce) | istoricul commit-urilor |
 
 ## Etapa 4: Componente construite din date
 Lista este randată din date, prin intermediul a două componente:
@@ -90,5 +93,21 @@ Lista este randată din date, prin intermediul a două componente:
 | S4-R3 | listă randată cu map + key={id}, fără avertismente | [frontend/src/components/ProdusList.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/components/ProdusList.jsx) | F12, Console |
 | S4-R4 | mesaj afișat pentru lista goală | [frontend/src/components/ProdusList.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/components/ProdusList.jsx) | golește lista / filtrează gol |
 | S4-R5 | starea elementului modifică aspectul cardului | [frontend/src/components/ProdusCard.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/components/ProdusCard.jsx) | comută stocul unui produs |
-| S4-R6 | secțiunea Etapa 4 din README + jurnalul AI | README.md, [ai-log/etapa-04.md](https://github.com/PAIpepe/MultiStock/blob/main/ai-log/etapa-04.md) | citește |
-| S4-R7 | commit-ul "Stage 4" publicat pe GitHub | [https://github.com/PAIpepe/MultiStock/commit/a1f9a56c12a5cb3299211a64d5f347ae179b3c23] | istoricul commit-urilor |
+| S4-R6 | secțiunea Etapa 4 din README + jurnalul AI | [ai-log/etapa-04.md](https://github.com/PAIpepe/MultiStock/blob/main/ai-log/etapa-04.md) | citește |
+| S4-R7 | commit-ul "Stage 4" publicat pe GitHub | [Vezi commit](https://github.com/PAIpepe/MultiStock/commit/a1f9a56c12a5cb3299211a64d5f347ae179b3c23) | istoricul commit-urilor |
+
+## Etapa 5: State local și evenimente
+Lista este păstrată în state-ul React. Bifarea și ștergerea funcționează direct din pagină, iar contoarele din antet se actualizează automat, fiind calculate derivat. Un buton dedicat din antet permite comutarea manuală între tema luminoasă și cea întunecată.
+
+### Etapa 5: Tabel de verificare
+
+| ID | Cerință | Unde (permalink) | Cum se verifică |
+|---|---|---|---|
+| S5-R1 | Lista păstrată în useState, în App | [frontend/src/App.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx) | citește |
+| S5-R2 | Bifarea schimbă state-ul și aspectul cardului | [frontend/src/App.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx)<br>[frontend/src/components/ProdusCard.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/components/ProdusCard.jsx) | click pe checkbox |
+| S5-R3 | Ștergerea elimină elementul din listă | [frontend/src/App.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx)<br>[frontend/src/components/ProdusCard.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/components/ProdusCard.jsx) | click pe butonul Șterge |
+| S5-R4 | Contorul din antet e derivat, nu în state | [frontend/src/App.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx) | bifează checkbox, urmărește antetul |
+| S5-R5 | Actualizări imutabile (fără push, splice, atribuiri) | [frontend/src/App.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx) | citește codul |
+| S5-R6 | Comutare temă: state + data-theme pe html | [frontend/src/App.jsx](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx)<br>[frontend/src/App.css](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.css) | click pe buton, testează ambele teme OS |
+| S5-R7 | Fără avertismente în consolă; README + jurnal AI | [README.md](https://github.com/PAIpepe/MultiStock/blob/main/README.md)<br>[ai-log/etapa-05.md](https://github.com/PAIpepe/MultiStock/blob/main/ai-log/etapa-05.md) | F12, tab-ul Console |
+| S5-R8 | Commit-ul "Stage 5" publicat | [Vezi commit](https://github.com/PAIpepe/MultiStock/commits/main) | istoricul commit-urilor GitHub |

@@ -57,94 +57,29 @@ export const DEPOZITE = [
 
 export const CATEGORII = ["Electronice", "Birotică", "Echipamente"];
 
-// Date inițiale conforme cu modelul de date din README.md
 const DATE_INITIALE = [
-  {
-    id: 1,
-    titlu: "Laptop Dell XPS 15",
-    locatia: "bucuresti",
-    categorie: "Electronice",
-    cantitate: 14,
-    in_stoc: true,
-  },
-  {
-    id: 2,
-    titlu: "Monitor Dell UltraSharp 27\"",
-    locatia: "bucuresti",
-    categorie: "Electronice",
-    cantitate: 8,
-    in_stoc: true,
-  },
-  {
-    id: 3,
-    titlu: "Scaun Ergonomic Birou",
-    locatia: "cluj",
-    categorie: "Birotică",
-    cantitate: 0,
-    in_stoc: false,
-  },
-  {
-    id: 4,
-    titlu: "Birou Reglabil Electric",
-    locatia: "cluj",
-    categorie: "Birotică",
-    cantitate: 5,
-    in_stoc: true,
-  },
-  {
-    id: 5,
-    titlu: "Cablu HDMI 2m UltraHD",
-    locatia: "timisoara",
-    categorie: "Electronice",
-    cantitate: 45,
-    in_stoc: true,
-  },
-  {
-    id: 6,
-    titlu: "Set Șurubelnițe Profesionale",
-    locatia: "timisoara",
-    categorie: "Echipamente",
-    cantitate: 12,
-    in_stoc: true,
-  },
-  {
-    id: 7,
-    titlu: "Imprimantă Multifuncțională Laser",
-    locatia: "pitesti",
-    categorie: "Birotică",
-    cantitate: 3,
-    in_stoc: true,
-  },
-  {
-    id: 8,
-    titlu: "Anvelope Iarnă Michelin 205/55 R16",
-    locatia: "pitesti",
-    categorie: "Echipamente",
-    cantitate: 0,
-    in_stoc: false,
-  },
-  {
-    id: 9,
-    titlu: "Tastatură Mecanică Wireless",
-    locatia: "iasi",
-    categorie: "Electronice",
-    cantitate: 19,
-    in_stoc: true,
-  },
-  {
-    id: 10,
-    titlu: "Router Wi-Fi 6 Mesh Gigabit",
-    locatia: "iasi",
-    categorie: "Electronice",
-    cantitate: 7,
-    in_stoc: true,
-  },
+  { id: 1, titlu: "Laptop Dell XPS 15", locatia: "bucuresti", categorie: "Electronice", cantitate: 14, in_stoc: true },
+  { id: 2, titlu: "Monitor Dell UltraSharp 27\"", locatia: "bucuresti", categorie: "Electronice", cantitate: 8, in_stoc: true },
+  { id: 3, titlu: "Scaun Ergonomic Birou", locatia: "cluj", categorie: "Birotică", cantitate: 0, in_stoc: false },
+  { id: 4, titlu: "Birou Reglabil Electric", locatia: "cluj", categorie: "Birotică", cantitate: 5, in_stoc: true },
+  { id: 5, titlu: "Cablu HDMI 2m UltraHD", locatia: "timisoara", categorie: "Electronice", cantitate: 45, in_stoc: true },
+  { id: 6, titlu: "Set Șurubelnițe Profesionale", locatia: "timisoara", categorie: "Echipamente", cantitate: 12, in_stoc: true },
+  { id: 7, titlu: "Imprimantă Multifuncțională Laser", locatia: "pitesti", categorie: "Birotică", cantitate: 3, in_stoc: true },
+  { id: 8, titlu: "Anvelope Iarnă Michelin 205/55 R16", locatia: "pitesti", categorie: "Echipamente", cantitate: 0, in_stoc: false },
+  { id: 9, titlu: "Tastatură Mecanică Wireless", locatia: "iasi", categorie: "Electronice", cantitate: 19, in_stoc: true },
+  { id: 10, titlu: "Router Wi-Fi 6 Mesh Gigabit", locatia: "iasi", categorie: "Electronice", cantitate: 7, in_stoc: true },
 ];
+
+// Tema de pornire: cea a sistemului de operare
+function temaInitiala() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
 
 export default function App() {
   const [stocuri, setStocuri] = useState(DATE_INITIALE);
   const [depozitMeniu, setDepozitMeniu] = useState(null);
   const [filtruLocatie, setFiltruLocatie] = useState(null);
+  const [tema, setTema] = useState(temaInitiala);
 
   // Câmpuri formular adăugare produs nou
   const [nouTitlu, setNouTitlu] = useState("");
@@ -185,6 +120,13 @@ export default function App() {
     setStocuri((prev) => prev.filter((item) => item.id !== id));
   };
 
+  // Comutarea temei: state-ul pentru buton, atributul data-theme pentru CSS
+  function handleTema() {
+    const noua = tema === "dark" ? "light" : "dark";
+    setTema(noua);
+    document.documentElement.dataset.theme = noua;
+  }
+
   const handleAdaugaProdus = (e) => {
     e.preventDefault();
     const titluCurat = nouTitlu.trim();
@@ -223,6 +165,13 @@ export default function App() {
     <div className="app-root">
       {/* ANTET */}
       <header className="app-header">
+        <button
+          className="theme-toggle"
+          onClick={handleTema}
+          aria-pressed={tema === "dark"}
+        >
+          {tema === "dark" ? "Mod luminos" : "Mod întunecat"}
+        </button>
         <div className="header-badge">📦 Sistem Centralizat de Distribuție</div>
         <h1>MultiStock</h1>
         <p>Gestiunea stocurilor și inventarului pe depozite din România.</p>
@@ -269,14 +218,12 @@ export default function App() {
         </div>
 
         <div className="map-wrapper map-full-width" id="romaniaMapContainer">
-          {/* SVG-ul României */}
           <img
             src={hartaSvg}
             alt="Harta României cu județe și depozite"
             className="romania-svg"
           />
 
-          {/* Fiecare pin cu meniul lui propriu, ancorat exact la coordonatele pinului */}
           {DEPOZITE.map((dep) => {
             const stats = getStatisticiDepozit(dep.id);
             const esteDeschis = depozitMeniu === dep.id;
@@ -292,7 +239,6 @@ export default function App() {
                   left: `${dep.coords.left}%`,
                 }}
               >
-                {/* Meniul glisant - apare deasupra pinului */}
                 {esteDeschis && (
                   <div
                     className="warehouse-menu-popover pin-anchored-popover"
@@ -400,7 +346,6 @@ export default function App() {
                   </div>
                 )}
 
-                {/* Butonul-pin */}
                 <button
                   type="button"
                   className={`warehouse-pin ${esteDeschis ? "open" : ""} ${esteFiltrat ? "active" : ""}`}
@@ -422,11 +367,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* CONTAINER PENTRU RESTUL CONȚINUTULUI */}
       <main className="container">
-        {/* SECȚIUNE CU 2 COLOANE: FORMULAR ADAUGARE + LISTĂ PRODUSE */}
         <div className="content-grid">
-          {/* FORMULAR DE ADAUGARE */}
           <section className="panel">
             <h2>➕ Adaugă produs nou</h2>
             <p className="panel-desc">
@@ -499,7 +441,6 @@ export default function App() {
             </form>
           </section>
 
-          {/* LISTA DE PRODUSE ÎNREGISTRATE (Randată din componenta copil) */}
           <section className="panel">
             <div className="panel-header">
               <div>
