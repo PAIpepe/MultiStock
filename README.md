@@ -124,7 +124,7 @@ Lista este servită de `json-server` din fișierul `db.json`. Aplicația o preia
 |---|---|---|---|
 | S6-R1 | npm run api pornește, ruta afișează JSON | [package.json#L11](https://github.com/PAIpepe/MultiStock/blob/a5a44abdfd70ebd1ec91502647bf80a34a4ce2e1/frontend/package.json#L11), [db.json](https://github.com/PAIpepe/MultiStock/blob/main/frontend/db.json) | deschide localhost:3001/stocuri |
 | S6-R2 | datele nu mai sunt scrise direct în React | | [citește codul](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx) |
-| S6-R3 | mesaj de încărcare în timpul așteptării | [App.jsx#L330](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx#L330) | adaugă --delay 4000 la pornirea API-ului |
+| S6-R3 | mesaj de încărcare în timpul așteptării | [App.jsx#L330](https://github.com/PAIpepe/MultiStock/blob/9ffe4e922dd23c79100964f909cffa353a2d8049/frontend/src/App.jsx#L474) | adaugă --delay 4000 la pornirea API-ului |
 | S6-R4 | mesaj de eroare când API-ul este picat | | oprește npm run api, reîncarcă pagina |
 | S6-R5 | fetch folosit doar în api.js, URL din env | [api.js#L3-L7](https://github.com/PAIpepe/MultiStock/blob/a5a44abdfd70ebd1ec91502647bf80a34a4ce2e1/frontend/src/api.js#L3-L7), [.env.example](https://github.com/PAIpepe/MultiStock/blob/main/frontend/env.example) | caută fetch în proiect |
 | S6-R6 | secțiunea Etapa 6 în README + jurnal AI | [README.md](https://github.com/PAIpepe/MultiStock/blob/main/README.md), [ai-log/etapa-06.md](https://github.com/PAIpepe/MultiStock/blob/main/ai-log/etapa-06.md) | citește |
