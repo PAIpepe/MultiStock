@@ -36,6 +36,7 @@ Deschideți `index.html` într-un browser. Nu necesită etapă de build sau serv
 - [x] Etapa 3: componente React de bază
 - [x] Etapa 4: componente construite din date
 - [x] Etapa 5: state local și evenimente
+- [x] Etapa 6: date de la un API de test
 
 ## Tabel de verificare
 
@@ -111,3 +112,20 @@ Lista este păstrată în state-ul React. Bifarea și ștergerea funcționează 
 | S5-R6 | Comutare temă: state + data-theme pe html | [frontend/src/App.jsx#L108-L112](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.jsx#L108-L112)<br>[frontend/src/App.css#L1-L20](https://github.com/PAIpepe/MultiStock/blob/main/frontend/src/App.css#L1-L20) | click pe buton, testează ambele teme OS |
 | S5-R7 | Fără avertismente în consolă; README + jurnal AI | [README.md](https://github.com/PAIpepe/MultiStock/blob/main/README.md)<br>[ai-log/etapa-05.md](https://github.com/PAIpepe/MultiStock/blob/main/ai-log/etapa-05.md) | F12, tab-ul Console |
 | S5-R8 | Commit-ul "Stage 5" publicat | [Vezi commit](https://github.com/PAIpepe/MultiStock/commit/93bac473a1d4dac05923ac85a32eb1fc03fa44b2) | istoricul commit-urilor GitHub |
+
+## Etapa 6: date de la un API de test (mock)
+Lista este servită de `json-server` din fișierul `db.json`. Aplicația o preia la încărcare și afișează o stare de așteptare (loading) și o stare de eroare.
+
+`npm run api` # terminalul 1, http://localhost:3001
+`npm run dev` # terminalul 2, http://localhost:5173
+
+### Etapa 6: Tabel de verificare
+| ID | Cerință | Unde (permalink) | Cum se verifică |
+|---|---|---|---|
+| S6-R1 | npm run api pornește, ruta afișează JSON | package.json#L..., db.json | deschide localhost:3001/stocuri |
+| S6-R2 | datele nu mai sunt scrise direct în React | | citește codul |
+| S6-R3 | mesaj de încărcare în timpul așteptării | App.jsx#L... | adaugă --delay 4000 la pornirea API-ului |
+| S6-R4 | mesaj de eroare când API-ul este picat | | oprește npm run api, reîncarcă pagina |
+| S6-R5 | fetch folosit doar în api.js, URL din env | api.js#L..., .env.example | caută fetch în proiect |
+| S6-R6 | secțiunea Etapa 6 în README + jurnal AI | README.md, ai-log/etapa-06.md | citește |
+| S6-R7 | commit-ul "Etapa 6" a fost publicat | link către commit-ul de cod | istoricul de commit-uri |

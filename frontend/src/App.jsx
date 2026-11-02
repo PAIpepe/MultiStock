@@ -1,6 +1,7 @@
-import { useState, useId } from "react";
+import { useState, useEffect, useId } from "react";
 import hartaSvg from "./assets/harta.svg";
 import ProdusList from "./components/ProdusList.jsx";
+import { fetchStocuri } from "./api.js";
 
 export const DEPOZITE = [
   {
@@ -57,31 +58,19 @@ export const DEPOZITE = [
 
 export const CATEGORII = ["Electronice", "Birotică", "Echipamente"];
 
-const DATE_INITIALE = [
-  { id: 1, titlu: "Laptop Dell XPS 15", locatia: "bucuresti", categorie: "Electronice", cantitate: 14, in_stoc: true },
-  { id: 2, titlu: "Monitor Dell UltraSharp 27\"", locatia: "bucuresti", categorie: "Electronice", cantitate: 8, in_stoc: true },
-  { id: 3, titlu: "Scaun Ergonomic Birou", locatia: "cluj", categorie: "Birotică", cantitate: 0, in_stoc: false },
-  { id: 4, titlu: "Birou Reglabil Electric", locatia: "cluj", categorie: "Birotică", cantitate: 5, in_stoc: true },
-  { id: 5, titlu: "Cablu HDMI 2m UltraHD", locatia: "timisoara", categorie: "Electronice", cantitate: 45, in_stoc: true },
-  { id: 6, titlu: "Set Șurubelnițe Profesionale", locatia: "timisoara", categorie: "Echipamente", cantitate: 12, in_stoc: true },
-  { id: 7, titlu: "Imprimantă Multifuncțională Laser", locatia: "pitesti", categorie: "Birotică", cantitate: 3, in_stoc: true },
-  { id: 8, titlu: "Anvelope Iarnă Michelin 205/55 R16", locatia: "pitesti", categorie: "Echipamente", cantitate: 0, in_stoc: false },
-  { id: 9, titlu: "Tastatură Mecanică Wireless", locatia: "iasi", categorie: "Electronice", cantitate: 19, in_stoc: true },
-  { id: 10, titlu: "Router Wi-Fi 6 Mesh Gigabit", locatia: "iasi", categorie: "Electronice", cantitate: 7, in_stoc: true },
-];
-
-// Tema de pornire: cea a sistemului de operare
 function temaInitiala() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 export default function App() {
-  const [stocuri, setStocuri] = useState(DATE_INITIALE);
+  const [stocuri, setStocuri] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const [depozitMeniu, setDepozitMeniu] = useState(null);
   const [filtruLocatie, setFiltruLocatie] = useState(null);
   const [tema, setTema] = useState(temaInitiala);
 
-  // Câmpuri formular adăugare produs nou
   const [nouTitlu, setNouTitlu] = useState("");
   const [nouLocatie, setNouLocatie] = useState("bucuresti");
   const [nouCategorie, setNouCategorie] = useState("Electronice");
@@ -92,6 +81,28 @@ export default function App() {
   const selectEtichetaId = useId();
   const selectCategorieId = useId();
   const inputCantitateId = useId();
+
+  // Rulează o singură dată, la montarea componentei
+  useEffect(() => {
+    let ignore = false;
+
+    async function load() {
+      try {
+        const data = await fetchStocuri();
+        if (!ignore) setStocuri(data);
+      } catch (err) {
+        if (!ignore) setError(err.message);
+      } finally {
+        if (!ignore) setLoading(false);
+      }
+    }
+
+    load();
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
 
   const totalProduse = stocuri.length;
   const inStocProduse = stocuri.filter((p) => p.in_stoc).length;
@@ -120,7 +131,6 @@ export default function App() {
     setStocuri((prev) => prev.filter((item) => item.id !== id));
   };
 
-  // Comutarea temei: state-ul pentru buton, atributul data-theme pentru CSS
   function handleTema() {
     const noua = tema === "dark" ? "light" : "dark";
     setTema(noua);
@@ -195,7 +205,6 @@ export default function App() {
         </div>
       </header>
 
-      {/* SECȚIUNE HARTA PE TOATĂ LĂȚIMEA PAGINII */}
       <section className="full-width-map-section">
         <div className="map-toolbar">
           <div className="map-toolbar-inner">
@@ -462,11 +471,21 @@ export default function App() {
               )}
             </div>
 
-            <ProdusList
-              produse={produseFiltrate}
-              onToggle={handleToggleStoc}
-              onDelete={handleStergeProdus}
-            />
+            {loading && <p className="info">Se încarcă lista de produse...</p>}
+            
+            {error && (
+              <p className="error">
+                Nu am putut încărca datele: {error}. Rulează <code>npm run api</code>?
+              </p>
+            )}
+
+            {!loading && !error && (
+              <ProdusList
+                produse={produseFiltrate}
+                onToggle={handleToggleStoc}
+                onDelete={handleStergeProdus}
+              />
+            )}
           </section>
         </div>
       </main>

@@ -1,0 +1,14 @@
+{
+  "stocuri": [
+    { "id": 1, "titlu": "Monitor 27 inch", "locatia": "bucuresti", "categorie": "Electronice", "cantitate": 15, "in_stoc": true },
+    { "id": 2, "titlu": "Tastatură Mecanică", "locatia": "cluj", "categorie": "Electronice", "cantitate": 0, "in_stoc": false },
+    { "id": 3, "titlu": "Mouse Wireless", "locatia": "timisoara", "categorie": "Electronice", "cantitate": 42, "in_stoc": true },
+    { "id": 4, "titlu": "Cablu HDMI 2m", "locatia": "pitesti", "categorie": "Echipamente", "cantitate": 100, "in_stoc": true },
+    { "id": 5, "titlu": "Căști Bluetooth", "locatia": "iasi", "categorie": "Electronice", "cantitate": 5, "in_stoc": true },
+    { "id": 6, "titlu": "SSD 1TB", "locatia": "bucuresti", "categorie": "Echipamente", "cantitate": 20, "in_stoc": true },
+    { "id": 7, "titlu": "Placă de bază", "locatia": "cluj", "categorie": "Echipamente", "cantitate": 10, "in_stoc": true },
+    { "id": 8, "titlu": "Procesor Intel i7", "locatia": "timisoara", "categorie": "Echipamente", "cantitate": 0, "in_stoc": false },
+    { "id": 9, "titlu": "Memorie RAM 16GB", "locatia": "pitesti", "categorie": "Echipamente", "cantitate": 30, "in_stoc": true },
+    { "id": 10, "titlu": "Placă video NVIDIA RTX 3080", "locatia": "iasi", "categorie": "Echipamente", "cantitate": 2, "in_stoc": true }
+  ]
+}

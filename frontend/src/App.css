@@ -22,7 +22,6 @@
   --warning: #f59e0b;
   --warning-soft: #fffbeb;
 
-  /* Culori dedicate pentru etichetele județelor / depozitelor */
   --badge-bucuresti: #0d9488;
   --badge-cluj: #d97706;
   --badge-timisoara: #8b5cf6;
@@ -93,9 +92,6 @@ body {
   flex-direction: column;
 }
 
-/* =========================================
-   HEADER STILIZAT CU STATISTICI
-   ========================================= */
 
 .app-header {
   background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
@@ -174,9 +170,6 @@ body {
   color: #fde68a;
 }
 
-/* =========================================
-   CONTAINER & LAYOUT
-   ========================================= */
 
 .container {
   max-width: 1400px;
@@ -237,9 +230,6 @@ body {
   margin: 2px 0 0 0;
 }
 
-/* =========================================
-   HARTA ROMÂNIEI - TOATĂ LĂȚIMEA PAGINII (FULL-WIDTH)
-   ========================================= */
 
 .full-width-map-section {
   width: 100%;
@@ -277,7 +267,7 @@ body {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
-  background: #C6ECFF; /* Exact nuanță de apă din SVG pentru integrare impecabilă */
+  background: #C6ECFF; 
   border-top: 1px solid #bfdbfe;
   border-bottom: 1px solid #bfdbfe;
   box-shadow: inset 0 2px 14px rgba(0, 0, 0, 0.06);
@@ -292,7 +282,6 @@ body {
   pointer-events: none;
 }
 
-/* --- PIN-ANCHOR: container pentru pin + meniul lui propriu --- */
 
 .pin-anchor {
   position: absolute;
@@ -308,8 +297,6 @@ body {
   z-index: 50;
 }
 
-/* --- BUTONUL DE PIN DE PE HARTĂ --- */
-/* Pinul este poziționat prin .pin-anchor (parent), deci nu mai are nevoie de absolute/translate propriu */
 
 .warehouse-pin {
   position: relative;
@@ -351,7 +338,6 @@ body {
   box-shadow: 0 0 0 5px rgba(56, 189, 248, 0.5), 0 12px 30px rgba(0, 0, 0, 0.35);
 }
 
-/* Efect de puls radar în jurul pinului */
 .pin-pulse-ring {
   position: absolute;
   top: 50%;
@@ -422,13 +408,9 @@ body {
   background: rgba(255, 255, 255, 0.25);
 }
 
-/* =========================================
-   MENIU ANCORAT LA PIN - GLISARE DE JOS ÎN SUS
-   ========================================= */
 
 .pin-anchored-popover {
   position: absolute;
-  /* Meniul se deschide DEASUPRA pinului — ancorăm colțul jos-centru */
   bottom: calc(100% + 14px);
   left: 50%;
   transform: translateX(-50%);
@@ -452,7 +434,6 @@ body {
   transform-origin: bottom center;
 }
 
-/* Micuț triunghi/indicator care leagă vizual meniul de pin */
 .pin-anchored-popover::after {
   content: "";
   position: absolute;
@@ -478,7 +459,6 @@ body {
   }
 }
 
-/* Meniul mai înalt — lista de iteme are mai mult spațiu */
 .pin-anchored-popover .menu-items-section {
   max-height: 320px;
   overflow-y: auto;
@@ -784,10 +764,6 @@ body {
   background: var(--border);
 }
 
-/* =========================================
-   FORMULAR ADAUGARE PRODUS
-   ========================================= */
-
 .item-form {
   display: flex;
   flex-direction: column;
@@ -861,10 +837,6 @@ body {
   color: #065f46;
   border: 1px solid #a7f3d0;
 }
-
-/* =========================================
-   LISTA PRINCIPALĂ DE PRODUSE
-   ========================================= */
 
 .btn-reset {
   background: var(--accent-soft);
@@ -1025,10 +997,6 @@ body {
   padding: 20px 0;
 }
 
-/* =========================================
-   FOOTER
-   ========================================= */
-
 .app-footer {
   text-align: center;
   padding: 24px 20px;
@@ -1042,10 +1010,6 @@ body {
 .app-footer p {
   margin: 0;
 }
-
-/* =========================================
-   RESPONSIVITATE
-   ========================================= */
 
 @media (max-width: 860px) {
   .content-grid {
@@ -1087,10 +1051,6 @@ body {
     padding: 6px 8px;
   }
 }
-
-/* =========================================
-   TEMĂ ÎNTUNECATĂ (DARK MODE)
-   ========================================= */
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -1156,4 +1116,12 @@ body {
   .app-footer {
     background: #1e293b;
   }
-}
+
+  .info { color: var(--muted); }
+  .error {
+    color: var(--mare);
+    background: var(--error-bg);
+    border: 1px solid var(--error-border);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
