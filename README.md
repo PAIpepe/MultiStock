@@ -157,15 +157,16 @@ Pentru ca aplicația să funcționeze, trebuie să rulezi **două terminale** si
    npm run api
 
 ### Etapa 7: Tabel de verificare
+### Etapa 7
 | ID | Cerință | Unde (permalink) | Cum se verifică |
 |---|---|---|---|
-| S7-R1 | Câmpurile obligatorii nu trimit fetch; focus blocat | `ProdusForm.jsx` | Testează un formular gol / incomplet; nu se reîncarcă pagina. |
-| S7-R2 | Formularul se golește doar după răspunsul 20x al API-ului | `ProdusForm.jsx` | Apasă "Adaugă" cu date corecte și oprește serverul mock; textul trebuie să rămână completat. |
-| S7-R3 | Butonul de adăugare este dezactivat în timpul trimiterii | `ProdusForm.jsx` | Adaugă un delay pe rețea și verifică disable-ul vizual. |
-| S7-R4 | Câmpurile cu validare eșuată au atributul `aria-invalid` setat corespunzător | `ProdusForm.jsx` | Inspectează câmpul în DOM după o eroare. |
-| S7-R5 | Mesajele de eroare sunt afișate direct în UI, cu aria-live (nu prin `alert()`) | `ProdusForm.jsx` | Verifică un formular greșit. |
-| S7-R6 | Ștergerea are un efect instant (Optimistic) și face fetch DELETE către API | `App.jsx` & `api.js` | Șterge un produs și fă refresh la pagină. Modificarea persistă. |
-| S7-R7 | Comutarea stării apelează API-ul cu PATCH și se păstrează la reîncărcare | `App.jsx` & `api.js` | Bifează un checkbox și fă refresh. |
-| S7-R8 | Atribute `data-testid` adăugate pe elementele cheie (form, list, item, toggle, delete, error, loading) | Toate componentele | Inspectează elementele în DOM. |
-| S7-R9 | README.md și jurnalul AI sunt actualizate pentru Etapa 7 | `README.md` & `ai-log/etapa-07.md` | Citește. |
-| S7-R10| Commit-ul etapei 7 este prezent în istoricul GitHub | Git history | Vizitează repository-ul. |
+| S7-R1 | Câmpurile obligatorii nu trimit fetch; focus blocat | [ProdusForm.jsx#L28-L38](https://github.com/PAIpepe/MultiStock/blob/9fda3f3332bfad2810381e7c9da2ba901fc2fa9f/frontend/src/components/ProdusForm.jsx#L28-L38) | Testează un formular gol / incomplet; nu se reîncarcă pagina. |
+| S7-R2 | Formularul se golește doar după răspunsul 20x al API-ului | [ProdusForm.jsx#L38-L47](https://github.com/PAIpepe/MultiStock/blob/9fda3f3332bfad2810381e7c9da2ba901fc2fa9f/frontend/src/components/ProdusForm.jsx#L38-L47) | Apasă "Adaugă" cu date corecte și oprește serverul mock; textul trebuie să rămână completat. |
+| S7-R3 | Butonul de adăugare este dezactivat în timpul trimiterii | [ProdusForm.jsx#L104-L106](https://github.com/PAIpepe/MultiStock/blob/9fda3f3332bfad2810381e7c9da2ba901fc2fa9f/frontend/src/components/ProdusForm.jsx#L104-L106) | Adaugă un delay pe rețea și verifică disable-ul vizual. |
+| S7-R4 | Câmpurile cu validare eșuată au atributul `aria-invalid` setat corespunzător | [ProdusForm.jsx#L66](https://github.com/PAIpepe/MultiStock/blob/9fda3f3332bfad2810381e7c9da2ba901fc2fa9f/frontend/src/components/ProdusForm.jsx#L66) | Inspectează câmpul în DOM după o eroare. |
+| S7-R5 | Mesajele de eroare sunt afișate direct în UI (nu prin `alert()`) | [ProdusForm.jsx#L103](https://github.com/PAIpepe/MultiStock/blob/9fda3f3332bfad2810381e7c9da2ba901fc2fa9f/frontend/src/components/ProdusForm.jsx#L103) | Verifică un formular greșit. |
+| S7-R6 | Ștergerea are un efect instant și face fetch DELETE către API | [App.jsx#L94-L102](https://github.com/PAIpepe/MultiStock/blob/9fda3f3332bfad2810381e7c9da2ba901fc2fa9f/frontend/src/App.jsx#L94-L102) | Șterge un produs și fă refresh la pagină. Modificarea persistă. |
+| S7-R7 | Comutarea stării apelează API-ul cu PATCH și se păstrează la reîncărcare | [App.jsx#L84-L93](https://github.com/PAIpepe/MultiStock/blob/9fda3f3332bfad2810381e7c9da2ba901fc2fa9f/frontend/src/App.jsx#L84-L93) | Bifează un checkbox și fă refresh. |
+| S7-R8 | Atribute `data-testid` adăugate pe elementele cheie (form, list, item, toggle, delete etc.) | [ProdusCard.jsx#L9-L37](https://github.com/PAIpepe/MultiStock/blob/9fda3f3332bfad2810381e7c9da2ba901fc2fa9f/frontend/src/components/ProdusCard.jsx#L9-L37) | Inspectează elementele în DOM. |
+| S7-R9 | README.md și jurnalul AI sunt actualizate pentru Etapa 7 | [README.md](https://github.com/PAIpepe/MultiStock/blob/9fda3f3332bfad2810381e7c9da2ba901fc2fa9f/README.md) | Citește. |
+| S7-R10| Commit-ul etapei 7 este prezent în istoricul GitHub | [Vezi commit](https://github.com/PAIpepe/MultiStock/commit/9fda3f3332bfad2810381e7c9da2ba901fc2fa9f) | Vizitează repository-ul. |
