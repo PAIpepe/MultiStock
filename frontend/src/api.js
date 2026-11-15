@@ -13,7 +13,7 @@ async function request(path, options = {}) {
 
 export function fetchStocuri() {
   return request("/stocuri");
-}
+} 
 
 export function createStoc(stoc) {
   return request("/stocuri", { method: "POST", body: JSON.stringify(stoc) });
