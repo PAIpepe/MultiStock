@@ -129,3 +129,43 @@ Lista este servită de `json-server` din fișierul `db.json`. Aplicația o preia
 | S6-R5 | fetch folosit doar în api.js, URL din env | [api.js#L3-L7](https://github.com/PAIpepe/MultiStock/blob/a5a44abdfd70ebd1ec91502647bf80a34a4ce2e1/frontend/src/api.js#L3-L7), [.env.example](https://github.com/PAIpepe/MultiStock/blob/main/frontend/env.example) | caută fetch în proiect |
 | S6-R6 | secțiunea Etapa 6 în README + jurnal AI | [README.md](https://github.com/PAIpepe/MultiStock/blob/main/README.md), [ai-log/etapa-06.md](https://github.com/PAIpepe/MultiStock/blob/main/ai-log/etapa-06.md) | citește |
 | S6-R7 | commit-ul "Etapa 6" a fost publicat | [Vezi commit](https://github.com/PAIpepe/MultiStock/commit/a5a44abdfd70ebd1ec91502647bf80a34a4ce2e1) | istoricul de commit-uri |
+
+### Etapa 7: Integrare API (Mock Server) și UX/UI Modern
+
+În această etapă, aplicația *MultiStock* a evoluat de la prototip frontend la o aplicație dinamică ce comunică cu un server de backend (mock), oferind persistență datelor și o experiență de utilizare premium.
+
+#### Noutăți aduse:
+*   **Persistența Datelor (REST API):**
+    *   Trecerea la operațiuni asincrone (Fetch API) cu metodele `GET`, `POST`, `PATCH`, `DELETE`.
+    *   Bază de date locală simulată prin pachetul `json-server` (`db.json`).
+*   **Arhitectură Single Page Application (SPA):**
+    *   Implementarea unui sistem de navigație (Acasă/Hartă vs. Inventar/Formular) fără reîncărcarea paginii.
+    *   Extragerea constantelor (depozite, categorii) în `depozite.js` și crearea componentei `ProdusNav.jsx` pentru un cod mai modular.
+*   **Modernizări majore de interfață (UI/UX):**
+    *   **Header Animat:** Antetul devine compact ("sticky") la derularea paginii, rearanjând elementele orizontal pentru a maximiza spațiul vizual de lucru.
+    *   **Tranziții fluide:** Efecte de _fade in_ și _slide_ la schimbarea secțiunilor aplicației, declanșate de chei React (`key`).
+    *   **Smart Popovers:** Meniurile depozitelor de pe hartă își calculează dinamic poziția (deschidere în sus sau în jos) pe baza coordonatelor SVG, prevenind ieșirea din ecran.
+    *   **Formulare și Validări:** Renunțarea la alertele native blocante (`alert()`) în favoarea unor mesaje de eroare inline, afișate direct în formular, cu borduri roșii pentru câmpurile invalide (`aria-invalid`).
+    *   **Design Glassmorphism:** Stilizare modernă pentru butonul de comutare a temei Luminos/Întunecat.
+
+#### 🛠️ Cum se rulează aplicația în Etapa 7:
+Pentru ca aplicația să funcționeze, trebuie să rulezi **două terminale** simultan:
+
+1. **Terminalul 1 (Serverul de Backend):**
+   ```bash
+   cd frontend
+   npm run api
+
+### Etapa 7: Tabel de verificare
+| ID | Cerință | Unde (permalink) | Cum se verifică |
+|---|---|---|---|
+| S7-R1 | Câmpurile obligatorii nu trimit fetch; focus blocat | `ProdusForm.jsx` | Testează un formular gol / incomplet; nu se reîncarcă pagina. |
+| S7-R2 | Formularul se golește doar după răspunsul 20x al API-ului | `ProdusForm.jsx` | Apasă "Adaugă" cu date corecte și oprește serverul mock; textul trebuie să rămână completat. |
+| S7-R3 | Butonul de adăugare este dezactivat în timpul trimiterii | `ProdusForm.jsx` | Adaugă un delay pe rețea și verifică disable-ul vizual. |
+| S7-R4 | Câmpurile cu validare eșuată au atributul `aria-invalid` setat corespunzător | `ProdusForm.jsx` | Inspectează câmpul în DOM după o eroare. |
+| S7-R5 | Mesajele de eroare sunt afișate direct în UI, cu aria-live (nu prin `alert()`) | `ProdusForm.jsx` | Verifică un formular greșit. |
+| S7-R6 | Ștergerea are un efect instant (Optimistic) și face fetch DELETE către API | `App.jsx` & `api.js` | Șterge un produs și fă refresh la pagină. Modificarea persistă. |
+| S7-R7 | Comutarea stării apelează API-ul cu PATCH și se păstrează la reîncărcare | `App.jsx` & `api.js` | Bifează un checkbox și fă refresh. |
+| S7-R8 | Atribute `data-testid` adăugate pe elementele cheie (form, list, item, toggle, delete, error, loading) | Toate componentele | Inspectează elementele în DOM. |
+| S7-R9 | README.md și jurnalul AI sunt actualizate pentru Etapa 7 | `README.md` & `ai-log/etapa-07.md` | Citește. |
+| S7-R10| Commit-ul etapei 7 este prezent în istoricul GitHub | Git history | Vizitează repository-ul. |

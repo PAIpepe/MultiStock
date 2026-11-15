@@ -1,10 +1,9 @@
 import ProdusCard from "./ProdusCard.jsx";
 
 export default function ProdusList({ produse, onToggle, onDelete }) {
-  // 1. Randare condiționată dacă lista este goală
   if (produse.length === 0) {
     return (
-      <p className="empty-msg">
+      <p className="empty-msg" data-testid="empty">
         Nu există produse înregistrate pentru filtrul selectat.
       </p>
     );

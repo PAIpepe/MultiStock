@@ -1,0 +1,10 @@
+{
+  "resource": "stocuri",
+  "title": "titlu",
+  "done": "in_stoc",
+  "sample": { 
+    "locatia": "cluj", 
+    "categorie": "Electronice", 
+    "cantitate": 10 
+  }
+}

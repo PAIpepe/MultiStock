@@ -1,20 +1,24 @@
-import { DEPOZITE } from "../App.jsx";
+import { DEPOZITE } from "../depozite.js";
 
 export default function ProdusCard({ produs, onToggle, onDelete }) {
-  // Găsim detaliile depozitului pentru a afișa orașul și culoarea etichetei
   const depozitItem = DEPOZITE.find((d) => d.id === produs.locatia);
 
   return (
-    <li className={`item-card ${!produs.in_stoc ? "done" : ""}`}>
+    <li 
+      className={`item-card ${!produs.in_stoc ? "done" : ""}`}
+      data-testid="item"
+      data-id={produs.id}
+    >
       <label className="item-card-main" style={{ display: "flex", alignItems: "center", gap: "12px", cursor: "pointer", width: "100%" }}>
         <input
           type="checkbox"
           checked={produs.in_stoc}
           onChange={() => onToggle(produs.id)}
           style={{ width: "18px", height: "18px", cursor: "pointer" }}
+          data-testid="item-toggle"
         />
         <div className="item-card-content">
-          <h3>{produs.titlu}</h3>
+          <h3 data-testid="item-title">{produs.titlu}</h3>
           <div className="item-tags">
             <span className={`badge ${depozitItem?.badgeClass || ""}`}>
               📍 {depozitItem?.oras || produs.locatia}
@@ -34,6 +38,7 @@ export default function ProdusCard({ produs, onToggle, onDelete }) {
           onClick={() => onDelete(produs.id)}
           title="Șterge produs"
           aria-label={`Șterge ${produs.titlu}`}
+          data-testid="item-delete"
         >
           ✕
         </button>
