@@ -156,6 +156,11 @@ Pentru ca aplicația să funcționeze, trebuie să rulezi **două terminale** si
    cd frontend
    npm run api
 
+2. **Terminalul 2 (Serverul de Frontend):**
+   ```bash
+   cd frontend
+   npm run dev
+
 ### Etapa 7: Tabel de verificare
 ### Etapa 7
 | ID | Cerință | Unde (permalink) | Cum se verifică |
