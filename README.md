@@ -132,7 +132,7 @@ Lista este servită de `json-server` din fișierul `db.json`. Aplicația o preia
 | S6-R6 | secțiunea Etapa 6 în README + jurnal AI | [README.md](https://github.com/PAIpepe/MultiStock/blob/main/README.md), [ai-log/etapa-06.md](https://github.com/PAIpepe/MultiStock/blob/main/ai-log/etapa-06.md) | citește |
 | S6-R7 | commit-ul "Etapa 6" a fost publicat | [Vezi commit](https://github.com/PAIpepe/MultiStock/commit/a5a44abdfd70ebd1ec91502647bf80a34a4ce2e1) | istoricul de commit-uri |
 
-### Etapa 7: Integrare API (Mock Server) și UX/UI Modern
+## Etapa 7: Integrare API (Mock Server) și UX/UI Modern
 
 În această etapă, aplicația *MultiStock* a evoluat de la prototip frontend la o aplicație dinamică ce comunică cu un server de backend (mock), oferind persistență datelor și o experiență de utilizare premium.
 
@@ -176,3 +176,26 @@ Pentru ca aplicația să funcționeze, trebuie să rulezi **două terminale** si
 | S7-R8 | Atribute `data-testid` adăugate pe elementele cheie (form, list, item, toggle, delete etc.) | [ProdusCard.jsx#L9-L37](https://github.com/PAIpepe/MultiStock/blob/9fda3f3332bfad2810381e7c9da2ba901fc2fa9f/frontend/src/components/ProdusCard.jsx#L9-L37) | Inspectează elementele în DOM. |
 | S7-R9 | README.md și jurnalul AI sunt actualizate pentru Etapa 7 | [README.md](https://github.com/PAIpepe/MultiStock/blob/9fda3f3332bfad2810381e7c9da2ba901fc2fa9f/README.md) | Citește. |
 | S7-R10| Commit-ul etapei 7 este prezent în istoricul GitHub | [Vezi commit](https://github.com/PAIpepe/MultiStock/commit/9fda3f3332bfad2810381e7c9da2ba901fc2fa9f) | Vizitează repository-ul. |
+
+## Etapa 8: Navigare cu React Router și stilizare pe componente (CSS Modules)
+
+Aplicația a fost împărțită în mai multe pagini folosind **React Router** (`react-router-dom`), cu un `Layout` comun (`<NavLink>` + `<Outlet />`) și navigare fără reîncărcarea paginii:
+- `/` (`StocuriPage`) — formularul de adăugare, statisticile și inventarul complet (cu suport pentru filtrare prin `?depozit=...`);
+- `/harta` (`HartaPage`) — harta interactivă a României cu cele 5 depozite județene și popover-uri pentru gestionarea rapidă a stocurilor;
+- `/stocuri/:id` (`ProdusDetaliuPage`) — pagina de detaliu care citește `id`-ul cu `useParams()`, încarcă produsul prin `fetchStoc(id)`, afișează informațiile extinse ale depozitului (județ, adresă) și tratează eroarea `404` pentru ID-uri inexistente;
+- `/despre` (`DesprePage`) — prezentarea aplicației și a stack-ului tehnic;
+- `*` (`NotFoundPage`) — pagina `404` pentru adrese inexistente (`data-testid="not-found"`).
+
+Stilurile au fost migrate din fișierul global `App.css` în **`index.css`** (doar variabile de temă Light/Dark persistate în `localStorage` și clase comune) și fișiere **`.module.css`** dedicate fiecărei componente și pagini. Au fost păstrate toate atributele `data-testid` din Etapa 7 și adăugate cele noi pentru Etapa 8 (`nav`, `item-link`, `detail`, `detail-title`, `not-found`).
+
+### Etapa 8: Tabel de verificare
+| ID | Cerință | Unde (permalink) | Cum se verifică |
+|---|---|---|---|
+| S8-R1 | Navigarea din antet schimbă pagina fără reîncărcare | [App.jsx](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/App.jsx), [Layout.jsx#L44-L54](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/components/Layout.jsx#L44-L54) | Click pe linkurile din antet și verifică fila Network (fără cerere HTML). |
+| S8-R2 | Un click pe un element deschide pagina lui de detaliu | [ProdusCard.jsx#L23-L29](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/components/ProdusCard.jsx#L23-L29), [ProdusDetaliuPage.jsx](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/pages/ProdusDetaliuPage.jsx) | Click pe titlul unui produs din listă. |
+| S8-R3 | Reîncărcarea pe adresa de detaliu funcționează; un id inexistent afișează eroare | [ProdusDetaliuPage.jsx#L13-L54](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/pages/ProdusDetaliuPage.jsx#L13-L54) | Fă refresh pe `/stocuri/1` și deschide `/stocuri/999`. |
+| S8-R4 | O adresă inexistentă duce la pagina 404 a aplicației | [App.jsx#L17](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/App.jsx#L17), [NotFoundPage.jsx](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/pages/NotFoundPage.jsx) | Deschide `/ceva`. |
+| S8-R5 | Fiecare componentă are propriul `.module.css`; `index.css` conține doar stiluri comune | [src/components](https://github.com/PAIpepe/MultiStock/tree/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/components), [src/pages](https://github.com/PAIpepe/MultiStock/tree/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/pages), [index.css](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/index.css) | Citește fișierele și verifică clasele generate în DevTools → Elements. |
+| S8-R6 | Atributele `data-testid` (tabelele 7.3 și 8.2) sunt prezente; ruta de detaliu `/stocuri/:id` | [Layout.jsx](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/components/Layout.jsx), [ProdusCard.jsx](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/components/ProdusCard.jsx), [ProdusDetaliuPage.jsx](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/pages/ProdusDetaliuPage.jsx), [NotFoundPage.jsx](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/pages/NotFoundPage.jsx) | `querySelector` în consolă (`[data-testid=nav] a`, `[data-testid=detail-title]`). |
+| S8-R7 | Secțiunea Etapa 8 în README și jurnalul AI completat | [README.md](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/README.md), [ai-log/etapa-08.md](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/ai-log/etapa-08.md) | Citește fișierele. |
+| S8-R8 | Commit-ul Etapei 8 este publicat pe GitHub | [Vezi commit](https://github.com/PAIpepe/MultiStock/commit/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a) | Verifică istoricul de commit-uri. |V
