@@ -1,5 +1,6 @@
 import { useState, useId } from "react";
 import { DEPOZITE, CATEGORII } from "../depozite.js";
+import styles from "./ProdusForm.module.css";
 
 const TITLU_MAX = 100;
 
@@ -36,12 +37,12 @@ export default function ProdusForm({ onAdd }) {
     setTrimite(true);
 
     try {
-      await onAdd({ 
-        titlu: titlu.trim(), 
-        locatia, 
-        categorie, 
-        cantitate: parseInt(cantitate, 10), 
-        in_stoc: true 
+      await onAdd({
+        titlu: titlu.trim(),
+        locatia,
+        categorie,
+        cantitate: parseInt(cantitate, 10),
+        in_stoc: true,
       });
       setTitlu("");
       setCantitate("1");
@@ -53,7 +54,7 @@ export default function ProdusForm({ onAdd }) {
   }
 
   return (
-    <form className="item-form" onSubmit={handleSubmit} noValidate data-testid="form">
+    <form className={styles.form} onSubmit={handleSubmit} noValidate data-testid="form">
       <label htmlFor={inputTitluId}>
         Nume produs
         <input
@@ -68,21 +69,35 @@ export default function ProdusForm({ onAdd }) {
         />
       </label>
 
-      <div className="form-row">
+      <div className={styles.row}>
         <label htmlFor={selectLocatieId}>
           Depozit destinație
-          <select id={selectLocatieId} value={locatia} onChange={(e) => setLocatia(e.target.value)} data-testid="form-locatia">
+          <select
+            id={selectLocatieId}
+            value={locatia}
+            onChange={(e) => setLocatia(e.target.value)}
+            data-testid="form-locatia"
+          >
             {DEPOZITE.map((d) => (
-              <option key={d.id} value={d.id}>{d.nume}</option>
+              <option key={d.id} value={d.id}>
+                {d.nume}
+              </option>
             ))}
           </select>
         </label>
 
         <label htmlFor={selectCategorieId}>
           Categorie
-          <select id={selectCategorieId} value={categorie} onChange={(e) => setCategorie(e.target.value)} data-testid="form-categorie">
+          <select
+            id={selectCategorieId}
+            value={categorie}
+            onChange={(e) => setCategorie(e.target.value)}
+            data-testid="form-categorie"
+          >
             {CATEGORII.map((cat) => (
-              <option key={cat} value={cat}>{cat}</option>
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
             ))}
           </select>
         </label>
@@ -100,9 +115,13 @@ export default function ProdusForm({ onAdd }) {
         />
       </label>
 
-      {eroare && <p className="error" data-testid="form-error">{eroare}</p>}
+      {eroare && (
+        <p className="error" role="alert" data-testid="form-error">
+          {eroare}
+        </p>
+      )}
 
-      <button type="submit" className="btn-primary" disabled={trimite} data-testid="form-submit">
+      <button type="submit" className="btn" disabled={trimite} data-testid="form-submit">
         {trimite ? "Se salvează..." : "Adaugă în stoc"}
       </button>
     </form>

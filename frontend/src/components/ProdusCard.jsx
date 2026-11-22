@@ -1,40 +1,46 @@
+import { Link } from "react-router-dom";
 import { DEPOZITE } from "../depozite.js";
+import styles from "./ProdusCard.module.css";
 
 export default function ProdusCard({ produs, onToggle, onDelete }) {
   const depozitItem = DEPOZITE.find((d) => d.id === produs.locatia);
 
   return (
-    <li 
-      className={`item-card ${!produs.in_stoc ? "done" : ""}`}
+    <li
+      className={`${styles.card} ${!produs.in_stoc ? styles.done : ""}`}
       data-testid="item"
       data-id={produs.id}
     >
-      <label className="item-card-main" style={{ display: "flex", alignItems: "center", gap: "12px", cursor: "pointer", width: "100%" }}>
+      <div className={styles.main}>
         <input
           type="checkbox"
           checked={produs.in_stoc}
           onChange={() => onToggle(produs.id)}
-          style={{ width: "18px", height: "18px", cursor: "pointer" }}
+          aria-label={`Marchează ${produs.titlu}`}
           data-testid="item-toggle"
         />
-        <div className="item-card-content">
-          <h3 data-testid="item-title">{produs.titlu}</h3>
-          <div className="item-tags">
+        <div className={styles.content}>
+          <Link
+            to={`/stocuri/${produs.id}`}
+            className={styles.title}
+            data-testid="item-link"
+          >
+            {produs.titlu}
+          </Link>
+          <div className={styles.tags}>
             <span className={`badge ${depozitItem?.badgeClass || ""}`}>
               📍 {depozitItem?.oras || produs.locatia}
             </span>
-            <span className="badge badge-category">
-              {produs.categorie}
-            </span>
+            <span className="badge badge-category">{produs.categorie}</span>
             <span className="badge-qty">{produs.cantitate} buc.</span>
           </div>
         </div>
-      </label>
+      </div>
 
-      <div className="item-card-actions">
+      <div className={styles.actions}>
         <button
           type="button"
-          className="btn-delete"
+          className={styles.btnDelete}
           onClick={() => onDelete(produs.id)}
           title="Șterge produs"
           aria-label={`Șterge ${produs.titlu}`}

@@ -87,6 +87,14 @@
       "cantitate": 1,
       "in_stoc": true,
       "id": 11
+    },
+    {
+      "titlu": "test",
+      "locatia": "bucuresti",
+      "categorie": "Electronice",
+      "cantitate": 1,
+      "in_stoc": true,
+      "id": 12
     }
   ]
 }

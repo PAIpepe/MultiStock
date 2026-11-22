@@ -37,6 +37,8 @@ Deschideți `index.html` într-un browser. Nu necesită etapă de build sau serv
 - [x] Etapa 4: componente construite din date
 - [x] Etapa 5: state local și evenimente
 - [x] Etapa 6: date de la un API de test
+- [x] Etapa 7: formular, validare și operații CRUD pe API
+- [x] Etapa 8: navigare cu React Router, pagină de detaliu și CSS Modules
 
 ## Tabel de verificare
 
@@ -162,7 +164,6 @@ Pentru ca aplicația să funcționeze, trebuie să rulezi **două terminale** si
    npm run dev
 
 ### Etapa 7: Tabel de verificare
-### Etapa 7
 | ID | Cerință | Unde (permalink) | Cum se verifică |
 |---|---|---|---|
 | S7-R1 | Câmpurile obligatorii nu trimit fetch; focus blocat | [ProdusForm.jsx#L28-L38](https://github.com/PAIpepe/MultiStock/blob/9fda3f3332bfad2810381e7c9da2ba901fc2fa9f/frontend/src/components/ProdusForm.jsx#L28-L38) | Testează un formular gol / incomplet; nu se reîncarcă pagina. |

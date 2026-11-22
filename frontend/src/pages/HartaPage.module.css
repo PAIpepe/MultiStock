@@ -1,0 +1,406 @@
+.page {
+  animation: fadeInSlide 0.35s ease forwards;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.toolbar {
+  text-align: center;
+  padding: 0 24px;
+}
+
+.toolbar h2 {
+  margin: 0 0 4px 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.mapWrapper {
+  position: relative;
+  width: 100%;
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  overflow: visible;
+}
+
+.romaniaSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+.pinAnchor {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pinAnchor:hover,
+.pinAnchor:focus-within {
+  z-index: 50;
+}
+
+.warehousePin {
+  position: relative;
+  background: var(--card);
+  border: 2px solid var(--accent);
+  color: var(--text);
+  border-radius: 28px;
+  padding: 8px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-family: inherit;
+  font-size: 0.92rem;
+  white-space: nowrap;
+}
+
+.warehousePin:hover {
+  transform: scale(1.08) translateY(-2px);
+  border-color: var(--accent-dark);
+}
+
+.pinOpen {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #38bdf8;
+  transform: scale(1.12) translateY(-2px);
+  box-shadow: 0 0 0 5px rgba(56, 189, 248, 0.45);
+}
+
+.pinPulseRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  border: 2px solid var(--accent);
+  transform: translate(-50%, -50%) scale(1);
+  animation: pinPulse 2.4s infinite;
+  pointer-events: none;
+}
+
+@keyframes pinPulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+  70%, 100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
+}
+
+.pinDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.pinOpen .pinDot {
+  background: #38bdf8;
+}
+
+.pinTitle {
+  font-weight: 700;
+}
+
+.pinCount {
+  font-weight: 700;
+  font-size: 0.8rem;
+  background: rgba(128, 128, 128, 0.18);
+  padding: 2px 7px;
+  border-radius: 12px;
+}
+
+.popover {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  max-width: 90vw;
+  max-height: 70vh;
+  background: var(--card-glass);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  z-index: 60;
+  overflow: hidden;
+}
+
+.popoverUp {
+  bottom: calc(100% + 14px);
+}
+
+.popoverDown {
+  top: calc(100% + 14px);
+}
+
+.menuHeader {
+  padding: 16px 20px 12px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.menuHeaderInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.menuTag {
+  align-self: flex-start;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.menuHeader h3 {
+  margin: 2px 0 0 0;
+  font-size: 1.2rem;
+}
+
+.menuAddress {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.menuCloseBtn {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.menuMetrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.metricBox {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.metricNumber {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.metricName {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.metricGreen .metricNumber { color: var(--success); }
+.metricRed .metricNumber { color: var(--danger); }
+
+.menuItemsSection {
+  padding: 12px 20px;
+  overflow-y: auto;
+  max-height: 240px;
+}
+
+.menuItemsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.menuItemsHeader h4 {
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+.hintText {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.menuEmpty {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  padding: 16px 0;
+}
+
+.menuItemsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menuItemRow {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.itemEpuizat {
+  opacity: 0.65;
+}
+
+.itemRowLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.itemRowTitle {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemRowTitle:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.itemRowMeta {
+  display: flex;
+  gap: 8px;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.metaCategory {
+  background: var(--bg);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.metaQty {
+  font-weight: 600;
+}
+
+.itemRowRight {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.statusToggleBtn {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btnInStoc {
+  background: var(--success-soft);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.btnEpuizat {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.itemDeleteBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.7;
+}
+
+.itemDeleteBtn:hover {
+  opacity: 1;
+}
+
+.menuFooter {
+  padding: 12px 20px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+}
+
+.menuFilterBtn {
+  flex: 1;
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.menuFilterBtn:hover {
+  background: var(--accent-dark);
+}
+
+.menuCloseAction {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .pinTitle {
+    display: none;
+  }
+}

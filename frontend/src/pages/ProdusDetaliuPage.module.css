@@ -1,0 +1,40 @@
+.detail {
+  max-width: 640px;
+  margin: 0 auto;
+  animation: fadeInSlide 0.35s ease forwards;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.back:hover {
+  text-decoration: underline;
+}
+
+.done {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 10px 20px;
+  margin: 18px 0 0 0;
+  align-items: center;
+}
+
+.fields dt {
+  font-weight: 700;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.fields dd {
+  margin: 0;
+}

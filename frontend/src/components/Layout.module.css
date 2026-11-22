@@ -1,0 +1,131 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--header-bg);
+  color: #ffffff;
+  padding: 18px 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scrolled {
+  padding: 10px 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.link {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  opacity: 0.85;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.link:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.active {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.26);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.themeToggle {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(4px);
+  transition: all 0.25s ease;
+}
+
+.themeToggle:hover {
+  background: rgba(255, 255, 255, 0.24);
+  transform: scale(1.04);
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 1400px;
+  margin: 28px auto;
+  padding: 0 24px;
+}
+
+.mainFull {
+  max-width: 100%;
+  padding: 0;
+  margin: 24px 0 0 0;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  border-top: 1px solid var(--border);
+  background: var(--card);
+  margin-top: 40px;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.pageTransition {
+  animation: fadeInSlide 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
