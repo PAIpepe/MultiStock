@@ -218,4 +218,15 @@ cd backend && npm install && npm run dev
 
 # Terminal 2 — Frontend (port 5173)
 cd frontend && npm install && npm run dev
+```
 
+### Etapa 9: Tabel de verificare
+| ID | Cerință | Unde (permalink) | Cum se verifică |
+|---|---|---|---|
+| S9-R1 | `npm run dev` din `backend/` pornește serverul pe portul 3001 | [backend/package.json](https://github.com/PAIpepe/MultiStock/blob/68663c8e5ad241799159b76f303252d822dbef7f/backend/package.json), [server.js](https://github.com/PAIpepe/MultiStock/blob/68663c8e5ad241799159b76f303252d822dbef7f/backend/src/server.js) | Pornește serverul și deschide `/health`. |
+| S9-R2 | Toate cele cinci rute răspund cu codurile HTTP corecte | [routes/stocuri.js](https://github.com/PAIpepe/MultiStock/blob/68663c8e5ad241799159b76f303252d822dbef7f/backend/src/routes/stocuri.js) | Rulează comenzile `curl` din README. |
+| S9-R3 | Datele invalide întorc 400 cu un mesaj clar | [validation.js](https://github.com/PAIpepe/MultiStock/blob/68663c8e5ad241799159b76f303252d822dbef7f/backend/src/validation.js) | Trimite `POST` cu `titlu` gol (`{"titlu":""}`). |
+| S9-R4 | Aplicația React funcționează cu `json-server` eliminat | [frontend/package.json](https://github.com/PAIpepe/MultiStock/blob/68663c8e5ad241799159b76f303252d822dbef7f/frontend/package.json), [api.js](https://github.com/PAIpepe/MultiStock/blob/68663c8e5ad241799159b76f303252d822dbef7f/frontend/src/api.js) | Oprește tot în afară de backend și testează CRUD în browser. |
+| S9-R5 | Fără erori CORS în consola browserului | [app.js](https://github.com/PAIpepe/MultiStock/blob/68663c8e5ad241799159b76f303252d822dbef7f/backend/src/app.js) | Deschide DevTools → Console pe `http://localhost:5173`. |
+| S9-R6 | Secțiunea Etapa 9 în README și jurnalul AI completat | [README.md](https://github.com/PAIpepe/MultiStock/blob/68663c8e5ad241799159b76f303252d822dbef7f/README.md), [ai-log/etapa-09.md](https://github.com/PAIpepe/MultiStock/blob/68663c8e5ad241799159b76f303252d822dbef7f/ai-log/etapa-09.md) | Citește fișierele. |
+| S9-R7 | Commit-ul Etapei 9 este publicat pe GitHub | [Vezi commit](https://github.com/PAIpepe/MultiStock/commit/68663c8e5ad241799159b76f303252d822dbef7f) | Verifică istoricul de commit-uri. |
