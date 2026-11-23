@@ -1,6 +1,11 @@
+import { Router } from "express";
+import { parseId, valideazaStoc } from "../validation.js";
+
+const router = Router();
+
+// Etapa 9: datele stau în memorie și se pierd la repornire (Etapa 10 le mută în MariaDB)
+let stocuri = [
 {
-  "stocuri": [
-    {
       "id": 1,
       "titlu": "Monitor 27 inch",
       "locatia": "bucuresti",
@@ -88,13 +93,65 @@
       "in_stoc": true,
       "id": 11
     },
-    {
-      "titlu": "test",
-      "locatia": "bucuresti",
-      "categorie": "Electronice",
-      "cantitate": 1,
-      "in_stoc": true,
-      "id": 12
-    }
-  ]
+];
+let nextId = 6;
+
+function gasesteIndex(req, res) {
+  const id = parseId(req.params.id);
+  if (!id) {
+    res.status(400).json({ error: "Id invalid" });
+    return -1;
+  }
+  const index = stocuri.findIndex((s) => s.id === id);
+  if (index === -1) {
+    res.status(404).json({ error: "Produsul nu există" });
+  }
+  return index;
 }
+
+// GET /stocuri
+router.get("/", (req, res) => {
+  res.json(stocuri);
+});
+
+// GET /stocuri/:id
+router.get("/:id", (req, res) => {
+  const index = gasesteIndex(req, res);
+  if (index === -1) return;
+  res.json(stocuri[index]);
+});
+
+// POST /stocuri
+router.post("/", (req, res) => {
+  const { erori, date } = valideazaStoc(req.body ?? {});
+  if (erori.length > 0) {
+    return res.status(400).json({ error: erori.join("; ") });
+  }
+  const stoc = { id: nextId++, ...date };
+  stocuri.push(stoc);
+  res.status(201).json(stoc);
+});
+
+// PATCH /stocuri/:id
+router.patch("/:id", (req, res) => {
+  const index = gasesteIndex(req, res);
+  if (index === -1) return;
+
+  const { erori, date } = valideazaStoc(req.body ?? {}, { partial: true });
+  if (erori.length > 0) {
+    return res.status(400).json({ error: erori.join("; ") });
+  }
+
+  stocuri[index] = { ...stocuri[index], ...date };
+  res.json(stocuri[index]);
+});
+
+// DELETE /stocuri/:id
+router.delete("/:id", (req, res) => {
+  const index = gasesteIndex(req, res);
+  if (index === -1) return;
+  stocuri.splice(index, 1);
+  res.status(204).end();
+});
+
+export default router;

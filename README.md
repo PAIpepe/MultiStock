@@ -39,6 +39,7 @@ Deschideți `index.html` într-un browser. Nu necesită etapă de build sau serv
 - [x] Etapa 6: date de la un API de test
 - [x] Etapa 7: formular, validare și operații CRUD pe API
 - [x] Etapa 8: navigare cu React Router, pagină de detaliu și CSS Modules
+- [x] Etapa 9: backend propriu cu Node.js și Express
 
 ## Tabel de verificare
 
@@ -198,4 +199,23 @@ Stilurile au fost migrate din fișierul global `App.css` în **`index.css`** (do
 | S8-R5 | Fiecare componentă are propriul `.module.css`; `index.css` conține doar stiluri comune | [src/components](https://github.com/PAIpepe/MultiStock/tree/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/components), [src/pages](https://github.com/PAIpepe/MultiStock/tree/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/pages), [index.css](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/index.css) | Citește fișierele și verifică clasele generate în DevTools → Elements. |
 | S8-R6 | Atributele `data-testid` (tabelele 7.3 și 8.2) sunt prezente; ruta de detaliu `/stocuri/:id` | [Layout.jsx](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/components/Layout.jsx), [ProdusCard.jsx](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/components/ProdusCard.jsx), [ProdusDetaliuPage.jsx](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/pages/ProdusDetaliuPage.jsx), [NotFoundPage.jsx](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/frontend/src/pages/NotFoundPage.jsx) | `querySelector` în consolă (`[data-testid=nav] a`, `[data-testid=detail-title]`). |
 | S8-R7 | Secțiunea Etapa 8 în README și jurnalul AI completat | [README.md](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/README.md), [ai-log/etapa-08.md](https://github.com/PAIpepe/MultiStock/blob/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a/ai-log/etapa-08.md) | Citește fișierele. |
-| S8-R8 | Commit-ul Etapei 8 este publicat pe GitHub | [Vezi commit](https://github.com/PAIpepe/MultiStock/commit/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a) | Verifică istoricul de commit-uri. |V
+| S8-R8 | Commit-ul Etapei 8 este publicat pe GitHub | [Vezi commit](https://github.com/PAIpepe/MultiStock/commit/e8bceb73bb0e835470f25fcee0f1fe4c8ff80f9a) | Verifică istoricul de commit-uri. |
+
+## Etapa 9: Backend propriu (Node.js și Express)
+
+`json-server` și `frontend/db.json` au fost eliminate complet din proiect. API-ul este acum un server propriu **Node.js + Express 5** aflat în `backend/`, cu:
+- rute REST complete pe `/stocuri` (`GET`, `GET /:id`, `POST`, `PATCH /:id`, `DELETE /:id`) și ruta de verificare `/health`;
+- validare pe server (`backend/src/validation.js`) cu listă albă de câmpuri, validare parțială pentru `PATCH`, verificare `id` și răspunsuri de eroare unitare `{ "error": "..." }`;
+- middleware-uri `cors()` (pentru originea frontendului), `express.json()`, handler pentru rute inexistente (`404`) și tratare centralizată a erorilor;
+- citirea mesajelor `body.error` direct în `frontend/src/api.js`.
+
+Datele sunt păstrate momentan în memorie și se resetează la repornirea serverului.
+
+### Cum se rulează aplicația
+```bash
+# Terminal 1 — Backend (port 3001)
+cd backend && npm install && npm run dev
+
+# Terminal 2 — Frontend (port 5173)
+cd frontend && npm install && npm run dev
+
